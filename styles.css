@@ -1,0 +1,97 @@
+body {
+  background-color: white; /* For browsers that do not support gradients */
+  
+  background: #fff url(https://www.rvn.se/static/img/bg.gif) repeat-x;
+  padding-bottom: 20px
+  
+  font-family: "PT-sans",Helvetica,Arial,sans-serif;
+  font-size: 1.6rem;
+  line-height: 1.5;
+  
+}
+
+body > div.container-fluid.main-container{ /* Flytta ner main container */
+  
+  margin-top: 45px;
+}
+
+body > div.container-fluid.main-container > div > div.toc-content.col-xs-12.col-sm-8.col-md-9{
+  border-top:10px solid #009fe3;
+  background: #fff;
+
+}
+
+#header::before {
+  content: url("rvn_top.jpg");
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 10px;
+  padding-top: 25px;
+}
+
+.author{
+font-size: small;
+}
+
+.date{
+font-size: small;
+}
+
+#preface{
+  margin-top: 20px;
+  border-top:1px solid #95c11f;
+  padding-top: 7px;
+  padding-left: 15px;
+  padding-right: 15px;
+  border-bottom:1px solid #95c11f;
+  margin-bottom: 20px;
+  padding-bottom: 7px;
+}
+
+
+.tocify { /*Border runt TOC*/
+  border: 1px solid #a19c97;
+}
+
+.list-group-item { /*Rader*/
+    z-index: 2;
+    color: #333;
+    background-color: #fff;
+    border-color: #000000;
+}
+
+.list-group-item.active, .list-group-item.active:focus, .list-group-item.active:hover {
+    z-index: 3;
+    color: #333;
+    font-weight: bold;
+    background-color: #c5c6c8;
+    border-color: #000000;
+}
+
+.list-group-item:hover {
+    text-decoration: underline;
+}
+
+
+
+#preface.p{
+    font-size: 1.188em;
+}
+
+h1 {
+  font-size: 2.1em;
+}
+
+h2 {
+  font-size: 1.4em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "PT sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+p {
+    font-family: "PT-sans",Helvetica,Arial,sans-serif;
+    font-size: 1.6rem;
+    line-height: 1.5;
+}
