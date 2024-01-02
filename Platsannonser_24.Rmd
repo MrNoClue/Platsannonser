@@ -1,5 +1,5 @@
 ---
-title: "Platsannonser (hos Af) - Jämtland"
+title: "Platsannonser (hos Af) - Västerbotten"
 author: "Detta är ett PM från Analyssamverkan Norr."
 date: "`r format(Sys.Date(), '%Y-%m-%d')`"
 output: 
@@ -20,7 +20,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 :::{#preface}
 <p>
-Detta PM visar annonsdata från Arbetsförmedlingens JobTech API, till och med 2023-12-03 - syftet är att ge en nulägesbild av eftersökt kompetens (yrken).
+Detta PM visar annonsdata från Arbetsförmedlingens JobTech API, till och med 2024-01-01 - syftet är att ge en nulägesbild av eftersökt kompetens (yrken).
 
 Lediga tjänster redovisas utifrån två olika ingångar: område och nivå. I "Yrkesområde (Af)" redovisas lediga tjänster utifrån område, därefter redovisas, per område, vilka yrken (SSYK3) som eftersöks. I "Nivå (SSYK1)" redovisas istället lediga tjänster utifrån den första nivån i SSYK-indelningen - den signalerar vilken utbildningsnivå yrkena kräver. Per nivå redovisas sedan inom vilka områden som eftersökta yrken finns.
 </p>
@@ -50,10 +50,10 @@ file_path <- file.path(root_dir, relative_path)
 df <- import(file_path)
 
 
-# TO-BE MODIFIED
-geografi<-"Jämtland"
+# INPUT - TO-BE MODIFIED
+geografi<-"Västerbotten"
 
-df <- filter(df, substr(workplace_address.municipality_code,1,2) == 23)
+df <- filter(df, substr(workplace_address.municipality_code,1,2) == 24)
 
 # GET VALUES
 ## TOTAL
@@ -61,56 +61,99 @@ summa <- sum(df$number_of_vacancies, na.rm = T)
 summa <- format(summa, big.mark=" ")
 
 ## 2284
-df_temp <- filter(df, substr(workplace_address.municipality_code,1,4) == 2303)
-ragunda <- sum(df_temp$number_of_vacancies, na.rm = T)
-ragunda <- format(ragunda, big.mark=" ")
+df_temp <- filter(df, substr(workplace_address.municipality_code,1,4) == 2422)
+sorsele <- sum(df_temp$number_of_vacancies, na.rm = T)
+sorsele <- format(sorsele, big.mark=" ")
 
 ## 2283
-df_temp <- filter(df, substr(workplace_address.municipality_code,1,4) == 2305)
-bracke <- sum(df_temp$number_of_vacancies, na.rm = T)
-bracke <- format(bracke, big.mark=" ")
+df_temp <- filter(df, substr(workplace_address.municipality_code,1,4) == 2421)
+storuman <- sum(df_temp$number_of_vacancies, na.rm = T)
+storuman <- format(storuman, big.mark=" ")
 
 ## 2282
-df_temp <- filter(df, substr(workplace_address.municipality_code,1,4) == 2309)
-krokom <- sum(df_temp$number_of_vacancies, na.rm = T)
-krokom <- format(krokom, big.mark=" ")
+df_temp <- filter(df, substr(workplace_address.municipality_code,1,4) == 2482)
+skelleftea <- sum(df_temp$number_of_vacancies, na.rm = T)
+skelleftea <- format(skelleftea, big.mark=" ")
 
 ## 2280
-df_temp <- filter(df, substr(workplace_address.municipality_code,1,4) == 2313)
-stromsund <- sum(df_temp$number_of_vacancies, na.rm = T)
-stromsund <- format(stromsund, big.mark=" ")
+df_temp <- filter(df, substr(workplace_address.municipality_code,1,4) == 2418)
+mala <- sum(df_temp$number_of_vacancies, na.rm = T)
+mala <- format(mala, big.mark=" ")
 
 ## 2281
-df_temp <- filter(df, substr(workplace_address.municipality_code,1,4) == 2321)
-are <- sum(df_temp$number_of_vacancies, na.rm = T)
-are <- format(are, big.mark=" ")
+df_temp <- filter(df, substr(workplace_address.municipality_code,1,4) == 2417)
+norsjo <- sum(df_temp$number_of_vacancies, na.rm = T)
+norsjo <- format(norsjo, big.mark=" ")
 
 ## 2260
-df_temp <- filter(df, substr(workplace_address.municipality_code,1,4) == 2326)
-berg <- sum(df_temp$number_of_vacancies, na.rm = T)
-berg <- format(berg, big.mark=" ")
+df_temp <- filter(df, substr(workplace_address.municipality_code,1,4) == 2462)
+vilhelmina <- sum(df_temp$number_of_vacancies, na.rm = T)
+vilhelmina <- format(vilhelmina, big.mark=" ")
 
 ## 2281
-df_temp <- filter(df, substr(workplace_address.municipality_code,1,4) == 2361)
-harjedalen <- sum(df_temp$number_of_vacancies, na.rm = T)
-harjedalen <- format(harjedalen, big.mark=" ")
+df_temp <- filter(df, substr(workplace_address.municipality_code,1,4) == 2481)
+lycksele <- sum(df_temp$number_of_vacancies, na.rm = T)
+lycksele <- format(lycksele, big.mark=" ")
 
 ## 2260
-df_temp <- filter(df, substr(workplace_address.municipality_code,1,4) == 2380)
-ostersund <- sum(df_temp$number_of_vacancies, na.rm = T)
-ostersund <- format(ostersund, big.mark=" ")
+df_temp <- filter(df, substr(workplace_address.municipality_code,1,4) == 2404)
+vindeln <- sum(df_temp$number_of_vacancies, na.rm = T)
+vindeln <- format(vindeln, big.mark=" ")
 
+
+df_temp <- filter(df, substr(workplace_address.municipality_code,1,4) == 2425)
+dorotea <- sum(df_temp$number_of_vacancies, na.rm = T)
+dorotea <- format(dorotea, big.mark=" ")
+
+
+df_temp <- filter(df, substr(workplace_address.municipality_code,1,4) == 2409)
+robertsfors <- sum(df_temp$number_of_vacancies, na.rm = T)
+robertsfors <- format(robertsfors, big.mark=" ")
+
+
+df_temp <- filter(df, substr(workplace_address.municipality_code,1,4) == 2480)
+umea <- sum(df_temp$number_of_vacancies, na.rm = T)
+umea <- format(umea, big.mark=" ")
+
+
+df_temp <- filter(df, substr(workplace_address.municipality_code,1,4) == 2463)
+asele <- sum(df_temp$number_of_vacancies, na.rm = T)
+asele <- format(asele, big.mark=" ")
+
+
+
+df_temp <- filter(df, substr(workplace_address.municipality_code,1,4) == 2403)
+bjurholm <- sum(df_temp$number_of_vacancies, na.rm = T)
+bjurholm <- format(bjurholm, big.mark=" ")
+
+
+
+df_temp <- filter(df, substr(workplace_address.municipality_code,1,4) == 2460)
+vannas <- sum(df_temp$number_of_vacancies, na.rm = T)
+vannas <- format(vannas, big.mark=" ")
+
+
+df_temp <- filter(df, substr(workplace_address.municipality_code,1,4) == 2401)
+nordmaling <- sum(df_temp$number_of_vacancies, na.rm = T)
+nordmaling <- format(nordmaling, big.mark=" ")
 ```
 
 * `r summa` lediga tjänster i `r geografi` hos Platsbanken, varav:
-  + `r ragunda` i Ragunda kommun
-  + `r bracke` i Bräcke kommun
-  + `r krokom` i Krokom kommun
-  + `r stromsund` i Strömsund kommun
-  + `r are` i Åre kommun
-  + `r berg` i Berg kommun
-  + `r harjedalen` i Härjedalen kommun
-  + `r ostersund` i Östersund kommun
+  + `r sorsele` i Sorsele kommun
+  + `r storuman` i Storuman kommun
+  + `r skelleftea` i Skellefteå kommun
+  + `r mala` i Malå kommun
+  + `r norsjo` i Norsjö kommun
+  + `r vilhelmina` i Vilhelmina kommun
+  + `r lycksele` i Lycksele kommun
+  + `r vindeln` i Vindeln kommun
+  + `r dorotea` i Dorotea kommun
+  + `r robertsfors` i Robertsfors kommun
+  + `r umea` i Umeå kommun
+  + `r asele` i Åsele kommun
+  + `r bjurholm` i Bjurholm kommun
+  + `r vannas` i Vannäs kommun
+  + `r nordmaling` i Umeå kommun
 
 <br>
 
@@ -282,14 +325,13 @@ df_22_kom$total_vac <- as.numeric(df_22_kom$total_vac)
 df_22_kom <- df_22_kom %>%
   mutate(occupation_field.label = forcats::fct_reorder(occupation_field.label, total_vac, .fun = sum),
          workplace_address.municipality_code = factor(workplace_address.municipality_code, 
-                                                      levels = c("2361", "2326", "2305", "2303", "2380","2321","2309","2313")))
+                                                      levels = c("2422","2421","2482","2418","2417","2462","2481","2404","2425","2409","2480","2463","2403","2460","2401")))
 
-color_mapping <- c("2313" = "#FF7F00", "2309" = "#FDBF6F", "2321" = "#E31A1C", "2380" = "#FB9A99", 
-                   "2303" = "#33A02C", "2305" = "#B2DF8A", "2326" = "#1F78B4", "2361" = "#A6CEE3")
+color_mapping <- c("2422" = "#800000","2421" = "#9A6324","2482"="#808000","2418"="#469990","2417"="#000075","2462"="#E6194B","2481"="#F58231","2404"="#FFE119","2425"="#3CB44B","2409"="#4363D8","2480"="#911EB4","2463"="#F032E6","2403"="#A9A9A9","2460"="#FABED4","2401"="#DCBEFF")
 
 # VIZ
 ## ggplot
-ggplot(df_22_kom, aes(x = occupation_field.label, y = total_vac, fill = factor(workplace_address.municipality_code, levels = c("2361", "2326", "2305", "2303", "2380","2321","2309","2313")))) +
+ggplot(df_22_kom, aes(x = occupation_field.label, y = total_vac, fill = factor(workplace_address.municipality_code, levels = c("2422","2421","2482","2418","2417","2462","2481","2404","2425","2409","2480","2463","2403","2460","2401")))) +
   geom_col() +
   scale_fill_manual(values=color_mapping, guide = guide_legend(reverse = TRUE)) +
   #scale_fill_viridis(discrete = T) +
@@ -308,7 +350,7 @@ ggplot(df_22_kom, aes(x = occupation_field.label, y = total_vac, fill = factor(w
   coord_flip()
 
 ```
-*Kommunkod: 2313 - Strömsund, 2309 - Krokom, 2321 - Åre, 2380 - Östersund, 2303 - Ragunda, 2305 - Bräcke, 2326 - Berg, 2361 - Härjedalen. För att underlätta läsning av diagrammet har 'klossar' införts - varje kloss motsvarar 50 tjänster.*
+*Kommunkod: 2422 - Sorsele, 2421 - Storuman, 2482 - Skellefteå, 2418 - Malå, 2417 - Norsjö, 2462 - Vilhelmina, 2481 - Lycksele, 2404 - Vindeln, 2425 - Dorotea, 2409 - Robertsfors, 2480 - Umeå, 2463 - Åsele, 2403 - Bjurholm, 2460 - Vännäs, 2401 - Nordmaling. För att underlätta läsning av diagrammet har 'klossar' införts - varje kloss motsvarar 50 tjänster.*
 
 <br>
 
@@ -386,12 +428,13 @@ df_22_omrade$total_vac <- as.numeric(df_22_omrade$total_vac)
 df_22_omrade <- df_22_omrade %>%
   mutate(ssyk3_text = forcats::fct_reorder(ssyk3_text, total_vac, .fun = sum),
          workplace_address.municipality_code = factor(workplace_address.municipality_code, 
-                                                      levels = c("2361", "2326", "2305", "2303", "2380","2321","2309","2313")))
+                                                      levels = c("2422","2421","2482","2418","2417","2462","2481","2404","2425","2409","2480","2463","2403","2460","2401")))
 
-color_mapping <- c("2313" = "#FF7F00", "2309" = "#FDBF6F", "2321" = "#E31A1C", "2380" = "#FB9A99", 
-                            "2303" = "#33A02C", "2305" = "#B2DF8A", "2326" = "#1F78B4", "2361" = "#A6CEE3")
+color_mapping <- c("2422" = "#800000","2421" = "#9A6324","2482"="#808000","2418"="#469990","2417"="#000075","2462"="#E6194B","2481"="#F58231","2404"="#FFE119","2425"="#3CB44B","2409"="#4363D8","2480"="#911EB4","2463"="#F032E6","2403"="#A9A9A9","2460"="#FABED4","2401"="#DCBEFF")
 
-ggplot(df_22_omrade, aes(x = ssyk3_text, y = total_vac, fill = factor(workplace_address.municipality_code, levels = c("2361", "2326", "2305", "2303", "2380","2321","2309","2313")))) +
+
+ggplot(df_22_omrade, aes(x = ssyk3_text, y = total_vac, fill = 
+                           factor(workplace_address.municipality_code, levels = c("2422","2421","2482","2418","2417","2462","2481","2404","2425","2409","2480","2463","2403","2460","2401")))) +
   geom_col() +
   scale_fill_manual(values=color_mapping, guide = guide_legend(reverse = TRUE)) +
   #scale_fill_viridis(discrete = TRUE, direction = 1, guide = guide_legend(reverse = TRUE)) +
@@ -411,7 +454,7 @@ ggplot(df_22_omrade, aes(x = ssyk3_text, y = total_vac, fill = factor(workplace_
 
 
 ```
-*Kommunkod: 2313 - Strömsund, 2309 - Krokom, 2321 - Åre, 2380 - Östersund, 2303 - Ragunda, 2305 - Bräcke, 2326 - Berg, 2361 - Härjedalen. För att underlätta läsning av diagrammet har 'klossar' införts - varje kloss motsvarar 50 tjänster.*
+*Kommunkod: 2422 - Sorsele, 2421 - Storuman, 2482 - Skellefteå, 2418 - Malå, 2417 - Norsjö, 2462 - Vilhelmina, 2481 - Lycksele, 2404 - Vindeln, 2425 - Dorotea, 2409 - Robertsfors, 2480 - Umeå, 2463 - Åsele, 2403 - Bjurholm, 2460 - Vännäs, 2401 - Nordmaling. För att underlätta läsning av diagrammet har 'klossar' införts - varje kloss motsvarar 50 tjänster.*
 
 <br>
 
@@ -488,12 +531,13 @@ df_22_omrade$total_vac <- as.numeric(df_22_omrade$total_vac)
 df_22_omrade <- df_22_omrade %>%
   mutate(ssyk3_text = forcats::fct_reorder(ssyk3_text, total_vac, .fun = sum),
          workplace_address.municipality_code = factor(workplace_address.municipality_code, 
-                                                      levels = c("2361", "2326", "2305", "2303", "2380","2321","2309","2313")))
+                                                      levels = c("2422","2421","2482","2418","2417","2462","2481","2404","2425","2409","2480","2463","2403","2460","2401")))
 
-color_mapping <- c("2313" = "#FF7F00", "2309" = "#FDBF6F", "2321" = "#E31A1C", "2380" = "#FB9A99", 
-                            "2303" = "#33A02C", "2305" = "#B2DF8A", "2326" = "#1F78B4", "2361" = "#A6CEE3")
+color_mapping <- c("2422" = "#800000","2421" = "#9A6324","2482"="#808000","2418"="#469990","2417"="#000075","2462"="#E6194B","2481"="#F58231","2404"="#FFE119","2425"="#3CB44B","2409"="#4363D8","2480"="#911EB4","2463"="#F032E6","2403"="#A9A9A9","2460"="#FABED4","2401"="#DCBEFF")
 
-ggplot(df_22_omrade, aes(x = ssyk3_text, y = total_vac, fill = factor(workplace_address.municipality_code, levels = c("2361", "2326", "2305", "2303", "2380","2321","2309","2313")))) +
+
+ggplot(df_22_omrade, aes(x = ssyk3_text, y = total_vac, fill = 
+                           factor(workplace_address.municipality_code, levels = c("2422","2421","2482","2418","2417","2462","2481","2404","2425","2409","2480","2463","2403","2460","2401")))) +
   geom_col() +
   scale_fill_manual(values=color_mapping, guide = guide_legend(reverse = TRUE)) +
   #scale_fill_viridis(discrete = TRUE, direction = 1, guide = guide_legend(reverse = TRUE)) +
@@ -513,7 +557,7 @@ ggplot(df_22_omrade, aes(x = ssyk3_text, y = total_vac, fill = factor(workplace_
 
 
 ```
-*Kommunkod: 2313 - Strömsund, 2309 - Krokom, 2321 - Åre, 2380 - Östersund, 2303 - Ragunda, 2305 - Bräcke, 2326 - Berg, 2361 - Härjedalen. För att underlätta läsning av diagrammet har 'klossar' införts - varje kloss motsvarar 50 tjänster.*
+*Kommunkod: 2422 - Sorsele, 2421 - Storuman, 2482 - Skellefteå, 2418 - Malå, 2417 - Norsjö, 2462 - Vilhelmina, 2481 - Lycksele, 2404 - Vindeln, 2425 - Dorotea, 2409 - Robertsfors, 2480 - Umeå, 2463 - Åsele, 2403 - Bjurholm, 2460 - Vännäs, 2401 - Nordmaling. För att underlätta läsning av diagrammet har 'klossar' införts - varje kloss motsvarar 50 tjänster.*
 
 <br>
 
@@ -590,12 +634,13 @@ df_22_omrade$total_vac <- as.numeric(df_22_omrade$total_vac)
 df_22_omrade <- df_22_omrade %>%
   mutate(ssyk3_text = forcats::fct_reorder(ssyk3_text, total_vac, .fun = sum),
          workplace_address.municipality_code = factor(workplace_address.municipality_code, 
-                                                      levels = c("2361", "2326", "2305", "2303", "2380","2321","2309","2313")))
+                                                      levels = c("2422","2421","2482","2418","2417","2462","2481","2404","2425","2409","2480","2463","2403","2460","2401")))
 
-color_mapping <- c("2313" = "#FF7F00", "2309" = "#FDBF6F", "2321" = "#E31A1C", "2380" = "#FB9A99", 
-                            "2303" = "#33A02C", "2305" = "#B2DF8A", "2326" = "#1F78B4", "2361" = "#A6CEE3")
+color_mapping <- c("2422" = "#800000","2421" = "#9A6324","2482"="#808000","2418"="#469990","2417"="#000075","2462"="#E6194B","2481"="#F58231","2404"="#FFE119","2425"="#3CB44B","2409"="#4363D8","2480"="#911EB4","2463"="#F032E6","2403"="#A9A9A9","2460"="#FABED4","2401"="#DCBEFF")
 
-ggplot(df_22_omrade, aes(x = ssyk3_text, y = total_vac, fill = factor(workplace_address.municipality_code, levels = c("2361", "2326", "2305", "2303", "2380","2321","2309","2313")))) +
+
+ggplot(df_22_omrade, aes(x = ssyk3_text, y = total_vac, fill = 
+                           factor(workplace_address.municipality_code, levels = c("2422","2421","2482","2418","2417","2462","2481","2404","2425","2409","2480","2463","2403","2460","2401")))) +
   geom_col() +
   scale_fill_manual(values=color_mapping, guide = guide_legend(reverse = TRUE)) +
   #scale_fill_viridis(discrete = TRUE, direction = 1, guide = guide_legend(reverse = TRUE)) +
@@ -615,7 +660,7 @@ ggplot(df_22_omrade, aes(x = ssyk3_text, y = total_vac, fill = factor(workplace_
 
 
 ```
-*Kommunkod: 2313 - Strömsund, 2309 - Krokom, 2321 - Åre, 2380 - Östersund, 2303 - Ragunda, 2305 - Bräcke, 2326 - Berg, 2361 - Härjedalen. För att underlätta läsning av diagrammet har 'klossar' införts - varje kloss motsvarar 50 tjänster.*
+*Kommunkod: 2422 - Sorsele, 2421 - Storuman, 2482 - Skellefteå, 2418 - Malå, 2417 - Norsjö, 2462 - Vilhelmina, 2481 - Lycksele, 2404 - Vindeln, 2425 - Dorotea, 2409 - Robertsfors, 2480 - Umeå, 2463 - Åsele, 2403 - Bjurholm, 2460 - Vännäs, 2401 - Nordmaling. För att underlätta läsning av diagrammet har 'klossar' införts - varje kloss motsvarar 50 tjänster.*
 
 <br>
 
@@ -692,12 +737,13 @@ df_22_omrade$total_vac <- as.numeric(df_22_omrade$total_vac)
 df_22_omrade <- df_22_omrade %>%
   mutate(ssyk3_text = forcats::fct_reorder(ssyk3_text, total_vac, .fun = sum),
          workplace_address.municipality_code = factor(workplace_address.municipality_code, 
-                                                      levels = c("2361", "2326", "2305", "2303", "2380","2321","2309","2313")))
+                                                      levels = c("2422","2421","2482","2418","2417","2462","2481","2404","2425","2409","2480","2463","2403","2460","2401")))
 
-color_mapping <- c("2313" = "#FF7F00", "2309" = "#FDBF6F", "2321" = "#E31A1C", "2380" = "#FB9A99", 
-                            "2303" = "#33A02C", "2305" = "#B2DF8A", "2326" = "#1F78B4", "2361" = "#A6CEE3")
+color_mapping <- c("2422" = "#800000","2421" = "#9A6324","2482"="#808000","2418"="#469990","2417"="#000075","2462"="#E6194B","2481"="#F58231","2404"="#FFE119","2425"="#3CB44B","2409"="#4363D8","2480"="#911EB4","2463"="#F032E6","2403"="#A9A9A9","2460"="#FABED4","2401"="#DCBEFF")
 
-ggplot(df_22_omrade, aes(x = ssyk3_text, y = total_vac, fill = factor(workplace_address.municipality_code, levels = c("2361", "2326", "2305", "2303", "2380","2321","2309","2313")))) +
+
+ggplot(df_22_omrade, aes(x = ssyk3_text, y = total_vac, fill = 
+                           factor(workplace_address.municipality_code, levels = c("2422","2421","2482","2418","2417","2462","2481","2404","2425","2409","2480","2463","2403","2460","2401")))) +
   geom_col() +
   scale_fill_manual(values=color_mapping, guide = guide_legend(reverse = TRUE)) +
   #scale_fill_viridis(discrete = TRUE, direction = 1, guide = guide_legend(reverse = TRUE)) +
@@ -717,7 +763,7 @@ ggplot(df_22_omrade, aes(x = ssyk3_text, y = total_vac, fill = factor(workplace_
 
 
 ```
-*Kommunkod: 2313 - Strömsund, 2309 - Krokom, 2321 - Åre, 2380 - Östersund, 2303 - Ragunda, 2305 - Bräcke, 2326 - Berg, 2361 - Härjedalen. För att underlätta läsning av diagrammet har 'klossar' införts - varje kloss motsvarar 50 tjänster.*
+*Kommunkod: 2422 - Sorsele, 2421 - Storuman, 2482 - Skellefteå, 2418 - Malå, 2417 - Norsjö, 2462 - Vilhelmina, 2481 - Lycksele, 2404 - Vindeln, 2425 - Dorotea, 2409 - Robertsfors, 2480 - Umeå, 2463 - Åsele, 2403 - Bjurholm, 2460 - Vännäs, 2401 - Nordmaling. För att underlätta läsning av diagrammet har 'klossar' införts - varje kloss motsvarar 50 tjänster.*
 
 <br>
 
@@ -794,12 +840,13 @@ df_22_omrade$total_vac <- as.numeric(df_22_omrade$total_vac)
 df_22_omrade <- df_22_omrade %>%
   mutate(ssyk3_text = forcats::fct_reorder(ssyk3_text, total_vac, .fun = sum),
          workplace_address.municipality_code = factor(workplace_address.municipality_code, 
-                                                      levels = c("2361", "2326", "2305", "2303", "2380","2321","2309","2313")))
+                                                      levels = c("2422","2421","2482","2418","2417","2462","2481","2404","2425","2409","2480","2463","2403","2460","2401")))
 
-color_mapping <- c("2313" = "#FF7F00", "2309" = "#FDBF6F", "2321" = "#E31A1C", "2380" = "#FB9A99", 
-                            "2303" = "#33A02C", "2305" = "#B2DF8A", "2326" = "#1F78B4", "2361" = "#A6CEE3")
+color_mapping <- c("2422" = "#800000","2421" = "#9A6324","2482"="#808000","2418"="#469990","2417"="#000075","2462"="#E6194B","2481"="#F58231","2404"="#FFE119","2425"="#3CB44B","2409"="#4363D8","2480"="#911EB4","2463"="#F032E6","2403"="#A9A9A9","2460"="#FABED4","2401"="#DCBEFF")
 
-ggplot(df_22_omrade, aes(x = ssyk3_text, y = total_vac, fill = factor(workplace_address.municipality_code, levels = c("2361", "2326", "2305", "2303", "2380","2321","2309","2313")))) +
+
+ggplot(df_22_omrade, aes(x = ssyk3_text, y = total_vac, fill = 
+                           factor(workplace_address.municipality_code, levels = c("2422","2421","2482","2418","2417","2462","2481","2404","2425","2409","2480","2463","2403","2460","2401")))) +
   geom_col() +
   scale_fill_manual(values=color_mapping, guide = guide_legend(reverse = TRUE)) +
   #scale_fill_viridis(discrete = TRUE, direction = 1, guide = guide_legend(reverse = TRUE)) +
@@ -819,7 +866,7 @@ ggplot(df_22_omrade, aes(x = ssyk3_text, y = total_vac, fill = factor(workplace_
 
 
 ```
-*Kommunkod: 2313 - Strömsund, 2309 - Krokom, 2321 - Åre, 2380 - Östersund, 2303 - Ragunda, 2305 - Bräcke, 2326 - Berg, 2361 - Härjedalen. För att underlätta läsning av diagrammet har 'klossar' införts - varje kloss motsvarar 50 tjänster.*
+*Kommunkod: 2422 - Sorsele, 2421 - Storuman, 2482 - Skellefteå, 2418 - Malå, 2417 - Norsjö, 2462 - Vilhelmina, 2481 - Lycksele, 2404 - Vindeln, 2425 - Dorotea, 2409 - Robertsfors, 2480 - Umeå, 2463 - Åsele, 2403 - Bjurholm, 2460 - Vännäs, 2401 - Nordmaling. För att underlätta läsning av diagrammet har 'klossar' införts - varje kloss motsvarar 50 tjänster.*
 
 <br>
 
@@ -896,12 +943,13 @@ df_22_omrade$total_vac <- as.numeric(df_22_omrade$total_vac)
 df_22_omrade <- df_22_omrade %>%
   mutate(ssyk3_text = forcats::fct_reorder(ssyk3_text, total_vac, .fun = sum),
          workplace_address.municipality_code = factor(workplace_address.municipality_code, 
-                                                      levels = c("2361", "2326", "2305", "2303", "2380","2321","2309","2313")))
+                                                      levels = c("2422","2421","2482","2418","2417","2462","2481","2404","2425","2409","2480","2463","2403","2460","2401")))
 
-color_mapping <- c("2313" = "#FF7F00", "2309" = "#FDBF6F", "2321" = "#E31A1C", "2380" = "#FB9A99", 
-                            "2303" = "#33A02C", "2305" = "#B2DF8A", "2326" = "#1F78B4", "2361" = "#A6CEE3")
+color_mapping <- c("2422" = "#800000","2421" = "#9A6324","2482"="#808000","2418"="#469990","2417"="#000075","2462"="#E6194B","2481"="#F58231","2404"="#FFE119","2425"="#3CB44B","2409"="#4363D8","2480"="#911EB4","2463"="#F032E6","2403"="#A9A9A9","2460"="#FABED4","2401"="#DCBEFF")
 
-ggplot(df_22_omrade, aes(x = ssyk3_text, y = total_vac, fill = factor(workplace_address.municipality_code, levels = c("2361", "2326", "2305", "2303", "2380","2321","2309","2313")))) +
+
+ggplot(df_22_omrade, aes(x = ssyk3_text, y = total_vac, fill = 
+                           factor(workplace_address.municipality_code, levels = c("2422","2421","2482","2418","2417","2462","2481","2404","2425","2409","2480","2463","2403","2460","2401")))) +
   geom_col() +
   scale_fill_manual(values=color_mapping, guide = guide_legend(reverse = TRUE)) +
   #scale_fill_viridis(discrete = TRUE, direction = 1, guide = guide_legend(reverse = TRUE)) +
@@ -921,7 +969,7 @@ ggplot(df_22_omrade, aes(x = ssyk3_text, y = total_vac, fill = factor(workplace_
 
 
 ```
-*Kommunkod: 2313 - Strömsund, 2309 - Krokom, 2321 - Åre, 2380 - Östersund, 2303 - Ragunda, 2305 - Bräcke, 2326 - Berg, 2361 - Härjedalen. För att underlätta läsning av diagrammet har 'klossar' införts - varje kloss motsvarar 50 tjänster.*
+*Kommunkod: 2422 - Sorsele, 2421 - Storuman, 2482 - Skellefteå, 2418 - Malå, 2417 - Norsjö, 2462 - Vilhelmina, 2481 - Lycksele, 2404 - Vindeln, 2425 - Dorotea, 2409 - Robertsfors, 2480 - Umeå, 2463 - Åsele, 2403 - Bjurholm, 2460 - Vännäs, 2401 - Nordmaling. För att underlätta läsning av diagrammet har 'klossar' införts - varje kloss motsvarar 50 tjänster.*
 
 <br>
 
@@ -998,12 +1046,13 @@ df_22_omrade$total_vac <- as.numeric(df_22_omrade$total_vac)
 df_22_omrade <- df_22_omrade %>%
   mutate(ssyk3_text = forcats::fct_reorder(ssyk3_text, total_vac, .fun = sum),
          workplace_address.municipality_code = factor(workplace_address.municipality_code, 
-                                                      levels = c("2361", "2326", "2305", "2303", "2380","2321","2309","2313")))
+                                                      levels = c("2422","2421","2482","2418","2417","2462","2481","2404","2425","2409","2480","2463","2403","2460","2401")))
 
-color_mapping <- c("2313" = "#FF7F00", "2309" = "#FDBF6F", "2321" = "#E31A1C", "2380" = "#FB9A99", 
-                            "2303" = "#33A02C", "2305" = "#B2DF8A", "2326" = "#1F78B4", "2361" = "#A6CEE3")
+color_mapping <- c("2422" = "#800000","2421" = "#9A6324","2482"="#808000","2418"="#469990","2417"="#000075","2462"="#E6194B","2481"="#F58231","2404"="#FFE119","2425"="#3CB44B","2409"="#4363D8","2480"="#911EB4","2463"="#F032E6","2403"="#A9A9A9","2460"="#FABED4","2401"="#DCBEFF")
 
-ggplot(df_22_omrade, aes(x = ssyk3_text, y = total_vac, fill = factor(workplace_address.municipality_code, levels = c("2361", "2326", "2305", "2303", "2380","2321","2309","2313")))) +
+
+ggplot(df_22_omrade, aes(x = ssyk3_text, y = total_vac, fill = 
+                           factor(workplace_address.municipality_code, levels = c("2422","2421","2482","2418","2417","2462","2481","2404","2425","2409","2480","2463","2403","2460","2401")))) +
   geom_col() +
   scale_fill_manual(values=color_mapping, guide = guide_legend(reverse = TRUE)) +
   #scale_fill_viridis(discrete = TRUE, direction = 1, guide = guide_legend(reverse = TRUE)) +
@@ -1023,7 +1072,7 @@ ggplot(df_22_omrade, aes(x = ssyk3_text, y = total_vac, fill = factor(workplace_
 
 
 ```
-*Kommunkod: 2313 - Strömsund, 2309 - Krokom, 2321 - Åre, 2380 - Östersund, 2303 - Ragunda, 2305 - Bräcke, 2326 - Berg, 2361 - Härjedalen. För att underlätta läsning av diagrammet har 'klossar' införts - varje kloss motsvarar 50 tjänster.*
+*Kommunkod: 2422 - Sorsele, 2421 - Storuman, 2482 - Skellefteå, 2418 - Malå, 2417 - Norsjö, 2462 - Vilhelmina, 2481 - Lycksele, 2404 - Vindeln, 2425 - Dorotea, 2409 - Robertsfors, 2480 - Umeå, 2463 - Åsele, 2403 - Bjurholm, 2460 - Vännäs, 2401 - Nordmaling. För att underlätta läsning av diagrammet har 'klossar' införts - varje kloss motsvarar 50 tjänster.*
 
 <br>
 
@@ -1100,12 +1149,13 @@ df_22_omrade$total_vac <- as.numeric(df_22_omrade$total_vac)
 df_22_omrade <- df_22_omrade %>%
   mutate(ssyk3_text = forcats::fct_reorder(ssyk3_text, total_vac, .fun = sum),
          workplace_address.municipality_code = factor(workplace_address.municipality_code, 
-                                                      levels = c("2361", "2326", "2305", "2303", "2380","2321","2309","2313")))
+                                                      levels = c("2422","2421","2482","2418","2417","2462","2481","2404","2425","2409","2480","2463","2403","2460","2401")))
 
-color_mapping <- c("2313" = "#FF7F00", "2309" = "#FDBF6F", "2321" = "#E31A1C", "2380" = "#FB9A99", 
-                            "2303" = "#33A02C", "2305" = "#B2DF8A", "2326" = "#1F78B4", "2361" = "#A6CEE3")
+color_mapping <- c("2422" = "#800000","2421" = "#9A6324","2482"="#808000","2418"="#469990","2417"="#000075","2462"="#E6194B","2481"="#F58231","2404"="#FFE119","2425"="#3CB44B","2409"="#4363D8","2480"="#911EB4","2463"="#F032E6","2403"="#A9A9A9","2460"="#FABED4","2401"="#DCBEFF")
 
-ggplot(df_22_omrade, aes(x = ssyk3_text, y = total_vac, fill = factor(workplace_address.municipality_code, levels = c("2361", "2326", "2305", "2303", "2380","2321","2309","2313")))) +
+
+ggplot(df_22_omrade, aes(x = ssyk3_text, y = total_vac, fill = 
+                           factor(workplace_address.municipality_code, levels = c("2422","2421","2482","2418","2417","2462","2481","2404","2425","2409","2480","2463","2403","2460","2401")))) +
   geom_col() +
   scale_fill_manual(values=color_mapping, guide = guide_legend(reverse = TRUE)) +
   #scale_fill_viridis(discrete = TRUE, direction = 1, guide = guide_legend(reverse = TRUE)) +
@@ -1125,8 +1175,7 @@ ggplot(df_22_omrade, aes(x = ssyk3_text, y = total_vac, fill = factor(workplace_
 
 
 ```
-*Kommunkod: 2313 - Strömsund, 2309 - Krokom, 2321 - Åre, 2380 - Östersund, 2303 - Ragunda, 2305 - Bräcke, 2326 - Berg, 2361 - Härjedalen. För att underlätta läsning av diagrammet har 'klossar' införts - varje kloss motsvarar 50 tjänster.*
-
+*Kommunkod: 2422 - Sorsele, 2421 - Storuman, 2482 - Skellefteå, 2418 - Malå, 2417 - Norsjö, 2462 - Vilhelmina, 2481 - Lycksele, 2404 - Vindeln, 2425 - Dorotea, 2409 - Robertsfors, 2480 - Umeå, 2463 - Åsele, 2403 - Bjurholm, 2460 - Vännäs, 2401 - Nordmaling. För att underlätta läsning av diagrammet har 'klossar' införts - varje kloss motsvarar 50 tjänster.*
 <br>
 
 ## Industriell tillverkning
@@ -1202,12 +1251,13 @@ df_22_omrade$total_vac <- as.numeric(df_22_omrade$total_vac)
 df_22_omrade <- df_22_omrade %>%
   mutate(ssyk3_text = forcats::fct_reorder(ssyk3_text, total_vac, .fun = sum),
          workplace_address.municipality_code = factor(workplace_address.municipality_code, 
-                                                      levels = c("2361", "2326", "2305", "2303", "2380","2321","2309","2313")))
+                                                      levels = c("2422","2421","2482","2418","2417","2462","2481","2404","2425","2409","2480","2463","2403","2460","2401")))
 
-color_mapping <- c("2313" = "#FF7F00", "2309" = "#FDBF6F", "2321" = "#E31A1C", "2380" = "#FB9A99", 
-                            "2303" = "#33A02C", "2305" = "#B2DF8A", "2326" = "#1F78B4", "2361" = "#A6CEE3")
+color_mapping <- c("2422" = "#800000","2421" = "#9A6324","2482"="#808000","2418"="#469990","2417"="#000075","2462"="#E6194B","2481"="#F58231","2404"="#FFE119","2425"="#3CB44B","2409"="#4363D8","2480"="#911EB4","2463"="#F032E6","2403"="#A9A9A9","2460"="#FABED4","2401"="#DCBEFF")
 
-ggplot(df_22_omrade, aes(x = ssyk3_text, y = total_vac, fill = factor(workplace_address.municipality_code, levels = c("2361", "2326", "2305", "2303", "2380","2321","2309","2313")))) +
+
+ggplot(df_22_omrade, aes(x = ssyk3_text, y = total_vac, fill = 
+                           factor(workplace_address.municipality_code, levels = c("2422","2421","2482","2418","2417","2462","2481","2404","2425","2409","2480","2463","2403","2460","2401")))) +
   geom_col() +
   scale_fill_manual(values=color_mapping, guide = guide_legend(reverse = TRUE)) +
   #scale_fill_viridis(discrete = TRUE, direction = 1, guide = guide_legend(reverse = TRUE)) +
@@ -1227,7 +1277,7 @@ ggplot(df_22_omrade, aes(x = ssyk3_text, y = total_vac, fill = factor(workplace_
 
 
 ```
-*Kommunkod: 2313 - Strömsund, 2309 - Krokom, 2321 - Åre, 2380 - Östersund, 2303 - Ragunda, 2305 - Bräcke, 2326 - Berg, 2361 - Härjedalen. För att underlätta läsning av diagrammet har 'klossar' införts - varje kloss motsvarar 50 tjänster.*
+*Kommunkod: 2422 - Sorsele, 2421 - Storuman, 2482 - Skellefteå, 2418 - Malå, 2417 - Norsjö, 2462 - Vilhelmina, 2481 - Lycksele, 2404 - Vindeln, 2425 - Dorotea, 2409 - Robertsfors, 2480 - Umeå, 2463 - Åsele, 2403 - Bjurholm, 2460 - Vännäs, 2401 - Nordmaling. För att underlätta läsning av diagrammet har 'klossar' införts - varje kloss motsvarar 50 tjänster.*
 
 <br>
 
@@ -1304,12 +1354,13 @@ df_22_omrade$total_vac <- as.numeric(df_22_omrade$total_vac)
 df_22_omrade <- df_22_omrade %>%
   mutate(ssyk3_text = forcats::fct_reorder(ssyk3_text, total_vac, .fun = sum),
          workplace_address.municipality_code = factor(workplace_address.municipality_code, 
-                                                      levels = c("2361", "2326", "2305", "2303", "2380","2321","2309","2313")))
+                                                      levels = c("2422","2421","2482","2418","2417","2462","2481","2404","2425","2409","2480","2463","2403","2460","2401")))
 
-color_mapping <- c("2313" = "#FF7F00", "2309" = "#FDBF6F", "2321" = "#E31A1C", "2380" = "#FB9A99", 
-                            "2303" = "#33A02C", "2305" = "#B2DF8A", "2326" = "#1F78B4", "2361" = "#A6CEE3")
+color_mapping <- c("2422" = "#800000","2421" = "#9A6324","2482"="#808000","2418"="#469990","2417"="#000075","2462"="#E6194B","2481"="#F58231","2404"="#FFE119","2425"="#3CB44B","2409"="#4363D8","2480"="#911EB4","2463"="#F032E6","2403"="#A9A9A9","2460"="#FABED4","2401"="#DCBEFF")
 
-ggplot(df_22_omrade, aes(x = ssyk3_text, y = total_vac, fill = factor(workplace_address.municipality_code, levels = c("2361", "2326", "2305", "2303", "2380","2321","2309","2313")))) +
+
+ggplot(df_22_omrade, aes(x = ssyk3_text, y = total_vac, fill = 
+                           factor(workplace_address.municipality_code, levels = c("2422","2421","2482","2418","2417","2462","2481","2404","2425","2409","2480","2463","2403","2460","2401")))) +
   geom_col() +
   scale_fill_manual(values=color_mapping, guide = guide_legend(reverse = TRUE)) +
   #scale_fill_viridis(discrete = TRUE, direction = 1, guide = guide_legend(reverse = TRUE)) +
@@ -1329,7 +1380,7 @@ ggplot(df_22_omrade, aes(x = ssyk3_text, y = total_vac, fill = factor(workplace_
 
 
 ```
-*Kommunkod: 2313 - Strömsund, 2309 - Krokom, 2321 - Åre, 2380 - Östersund, 2303 - Ragunda, 2305 - Bräcke, 2326 - Berg, 2361 - Härjedalen. För att underlätta läsning av diagrammet har 'klossar' införts - varje kloss motsvarar 50 tjänster.*
+*Kommunkod: 2422 - Sorsele, 2421 - Storuman, 2482 - Skellefteå, 2418 - Malå, 2417 - Norsjö, 2462 - Vilhelmina, 2481 - Lycksele, 2404 - Vindeln, 2425 - Dorotea, 2409 - Robertsfors, 2480 - Umeå, 2463 - Åsele, 2403 - Bjurholm, 2460 - Vännäs, 2401 - Nordmaling. För att underlätta läsning av diagrammet har 'klossar' införts - varje kloss motsvarar 50 tjänster.*
 
 <br>
 
@@ -1406,12 +1457,13 @@ df_22_omrade$total_vac <- as.numeric(df_22_omrade$total_vac)
 df_22_omrade <- df_22_omrade %>%
   mutate(ssyk3_text = forcats::fct_reorder(ssyk3_text, total_vac, .fun = sum),
          workplace_address.municipality_code = factor(workplace_address.municipality_code, 
-                                                      levels = c("2361", "2326", "2305", "2303", "2380","2321","2309","2313")))
+                                                      levels = c("2422","2421","2482","2418","2417","2462","2481","2404","2425","2409","2480","2463","2403","2460","2401")))
 
-color_mapping <- c("2313" = "#FF7F00", "2309" = "#FDBF6F", "2321" = "#E31A1C", "2380" = "#FB9A99", 
-                            "2303" = "#33A02C", "2305" = "#B2DF8A", "2326" = "#1F78B4", "2361" = "#A6CEE3")
+color_mapping <- c("2422" = "#800000","2421" = "#9A6324","2482"="#808000","2418"="#469990","2417"="#000075","2462"="#E6194B","2481"="#F58231","2404"="#FFE119","2425"="#3CB44B","2409"="#4363D8","2480"="#911EB4","2463"="#F032E6","2403"="#A9A9A9","2460"="#FABED4","2401"="#DCBEFF")
 
-ggplot(df_22_omrade, aes(x = ssyk3_text, y = total_vac, fill = factor(workplace_address.municipality_code, levels = c("2361", "2326", "2305", "2303", "2380","2321","2309","2313")))) +
+
+ggplot(df_22_omrade, aes(x = ssyk3_text, y = total_vac, fill = 
+                           factor(workplace_address.municipality_code, levels = c("2422","2421","2482","2418","2417","2462","2481","2404","2425","2409","2480","2463","2403","2460","2401")))) +
   geom_col() +
   scale_fill_manual(values=color_mapping, guide = guide_legend(reverse = TRUE)) +
   #scale_fill_viridis(discrete = TRUE, direction = 1, guide = guide_legend(reverse = TRUE)) +
@@ -1431,7 +1483,7 @@ ggplot(df_22_omrade, aes(x = ssyk3_text, y = total_vac, fill = factor(workplace_
 
 
 ```
-*Kommunkod: 2313 - Strömsund, 2309 - Krokom, 2321 - Åre, 2380 - Östersund, 2303 - Ragunda, 2305 - Bräcke, 2326 - Berg, 2361 - Härjedalen. För att underlätta läsning av diagrammet har 'klossar' införts - varje kloss motsvarar 50 tjänster.*
+*Kommunkod: 2422 - Sorsele, 2421 - Storuman, 2482 - Skellefteå, 2418 - Malå, 2417 - Norsjö, 2462 - Vilhelmina, 2481 - Lycksele, 2404 - Vindeln, 2425 - Dorotea, 2409 - Robertsfors, 2480 - Umeå, 2463 - Åsele, 2403 - Bjurholm, 2460 - Vännäs, 2401 - Nordmaling. För att underlätta läsning av diagrammet har 'klossar' införts - varje kloss motsvarar 50 tjänster.*
 
 <br>
 
@@ -1508,12 +1560,13 @@ df_22_omrade$total_vac <- as.numeric(df_22_omrade$total_vac)
 df_22_omrade <- df_22_omrade %>%
   mutate(ssyk3_text = forcats::fct_reorder(ssyk3_text, total_vac, .fun = sum),
          workplace_address.municipality_code = factor(workplace_address.municipality_code, 
-                                                      levels = c("2361", "2326", "2305", "2303", "2380","2321","2309","2313")))
+                                                      levels = c("2422","2421","2482","2418","2417","2462","2481","2404","2425","2409","2480","2463","2403","2460","2401")))
 
-color_mapping <- c("2313" = "#FF7F00", "2309" = "#FDBF6F", "2321" = "#E31A1C", "2380" = "#FB9A99", 
-                            "2303" = "#33A02C", "2305" = "#B2DF8A", "2326" = "#1F78B4", "2361" = "#A6CEE3")
+color_mapping <- c("2422" = "#800000","2421" = "#9A6324","2482"="#808000","2418"="#469990","2417"="#000075","2462"="#E6194B","2481"="#F58231","2404"="#FFE119","2425"="#3CB44B","2409"="#4363D8","2480"="#911EB4","2463"="#F032E6","2403"="#A9A9A9","2460"="#FABED4","2401"="#DCBEFF")
 
-ggplot(df_22_omrade, aes(x = ssyk3_text, y = total_vac, fill = factor(workplace_address.municipality_code, levels = c("2361", "2326", "2305", "2303", "2380","2321","2309","2313")))) +
+
+ggplot(df_22_omrade, aes(x = ssyk3_text, y = total_vac, fill = 
+                           factor(workplace_address.municipality_code, levels = c("2422","2421","2482","2418","2417","2462","2481","2404","2425","2409","2480","2463","2403","2460","2401")))) +
   geom_col() +
   scale_fill_manual(values=color_mapping, guide = guide_legend(reverse = TRUE)) +
   #scale_fill_viridis(discrete = TRUE, direction = 1, guide = guide_legend(reverse = TRUE)) +
@@ -1533,8 +1586,7 @@ ggplot(df_22_omrade, aes(x = ssyk3_text, y = total_vac, fill = factor(workplace_
 
 
 ```
-*Kommunkod: 2313 - Strömsund, 2309 - Krokom, 2321 - Åre, 2380 - Östersund, 2303 - Ragunda, 2305 - Bräcke, 2326 - Berg, 2361 - Härjedalen. För att underlätta läsning av diagrammet har 'klossar' införts - varje kloss motsvarar 50 tjänster.*
-
+*Kommunkod: 2422 - Sorsele, 2421 - Storuman, 2482 - Skellefteå, 2418 - Malå, 2417 - Norsjö, 2462 - Vilhelmina, 2481 - Lycksele, 2404 - Vindeln, 2425 - Dorotea, 2409 - Robertsfors, 2480 - Umeå, 2463 - Åsele, 2403 - Bjurholm, 2460 - Vännäs, 2401 - Nordmaling. För att underlätta läsning av diagrammet har 'klossar' införts - varje kloss motsvarar 50 tjänster.*
 <br>
 
 ## Militära yrken
@@ -1605,16 +1657,10 @@ gg<-ggplot(df_22_omrade_kval, aes(x = ssyk3_text, y = total_vac, fill = factor(k
 ## Filter on 22
 df_22_omrade <- filter(df, occupation_field.label == "Militära yrken")
 
-# Check if df_22_omrade_kval is empty
-if (nrow(df_22_omrade) == 0) {
-  message("The dataframe is empty. Skipping this chunk.")
-  knitr::opts_chunk$set(error = FALSE)  # Stop chunk execution here
-} else {
-  df_22_omrade <- df_22_omrade %>%
+df_22_omrade <- df_22_omrade %>%
   group_by(ssyk3_text, workplace_address.municipality_code) %>%
   summarize(total_vac = sum(number_of_vacancies, na.rm = TRUE)) %>%
   ungroup()
-
 
 max_value <- df_22_omrade %>%
   group_by(ssyk3_text) %>%
@@ -1629,38 +1675,33 @@ df_22_omrade$total_vac <- as.numeric(df_22_omrade$total_vac)
 df_22_omrade <- df_22_omrade %>%
   mutate(ssyk3_text = forcats::fct_reorder(ssyk3_text, total_vac, .fun = sum),
          workplace_address.municipality_code = factor(workplace_address.municipality_code, 
-                                                      levels = c("2361", "2326", "2305", "2303", "2380","2321","2309","2313")))
+                                                      levels = c("2422","2421","2482","2418","2417","2462","2481","2404","2425","2409","2480","2463","2403","2460","2401")))
 
-color_mapping <- c("2313" = "#FF7F00", "2309" = "#FDBF6F", "2321" = "#E31A1C", "2380" = "#FB9A99", 
-                            "2303" = "#33A02C", "2305" = "#B2DF8A", "2326" = "#1F78B4", "2361" = "#A6CEE3")
+color_mapping <- c("2422" = "#800000","2421" = "#9A6324","2482"="#808000","2418"="#469990","2417"="#000075","2462"="#E6194B","2481"="#F58231","2404"="#FFE119","2425"="#3CB44B","2409"="#4363D8","2480"="#911EB4","2463"="#F032E6","2403"="#A9A9A9","2460"="#FABED4","2401"="#DCBEFF")
 
-gg<-ggplot(df_22_omrade, aes(x = ssyk3_text, y = total_vac, fill = factor(workplace_address.municipality_code, levels = c("2361", "2326", "2305", "2303", "2380","2321","2309","2313")))) +
+
+ggplot(df_22_omrade, aes(x = ssyk3_text, y = total_vac, fill = 
+                           factor(workplace_address.municipality_code, levels = c("2422","2421","2482","2418","2417","2462","2481","2404","2425","2409","2480","2463","2403","2460","2401")))) +
   geom_col() +
   scale_fill_manual(values=color_mapping, guide = guide_legend(reverse = TRUE)) +
   #scale_fill_viridis(discrete = TRUE, direction = 1, guide = guide_legend(reverse = TRUE)) +
+  geom_hline(yintercept = seq(from = 0, to = max_value, by = 50), color = "white") +
   theme_tufte() +
   theme(plot.title = element_text(size = 14, face = "bold"),
         legend.title = element_blank(),
         legend.position = "bottom",
         axis.ticks.x = element_blank()) +
   labs(title = "Lediga tjänster",
-       subtitle = sprintf("Militära yrken, SSYK3 - %s", geografi),
+       subtitle = sprintf("Naturbruk, SSYK3 - %s", geografi),
        y = "Tjänster",
        x = "",
        caption = "Källa: Af och bearbetningar av Region Västernorrland") +
   scale_y_continuous(labels = number_format(accuracy = 1))+
   coord_flip()
 
-  # Check if df_22_omrade_kval is not empty before adding geom_hline
-  if (!is_empty(df_22_omrade_kval)) {
-    gg <- gg + geom_hline(yintercept = seq(from = 0, to = max_value, by = 50), color = "white")
-  }
 
-  gg  # Display the plot
-
-}
 ```
-*Kommunkod: 2313 - Strömsund, 2309 - Krokom, 2321 - Åre, 2380 - Östersund, 2303 - Ragunda, 2305 - Bräcke, 2326 - Berg, 2361 - Härjedalen. För att underlätta läsning av diagrammet har 'klossar' införts - varje kloss motsvarar 50 tjänster.*
+*Kommunkod: 2422 - Sorsele, 2421 - Storuman, 2482 - Skellefteå, 2418 - Malå, 2417 - Norsjö, 2462 - Vilhelmina, 2481 - Lycksele, 2404 - Vindeln, 2425 - Dorotea, 2409 - Robertsfors, 2480 - Umeå, 2463 - Åsele, 2403 - Bjurholm, 2460 - Vännäs, 2401 - Nordmaling. För att underlätta läsning av diagrammet har 'klossar' införts - varje kloss motsvarar 50 tjänster.*
 
 <br>
 
@@ -1737,12 +1778,13 @@ df_22_omrade$total_vac <- as.numeric(df_22_omrade$total_vac)
 df_22_omrade <- df_22_omrade %>%
   mutate(ssyk3_text = forcats::fct_reorder(ssyk3_text, total_vac, .fun = sum),
          workplace_address.municipality_code = factor(workplace_address.municipality_code, 
-                                                      levels = c("2361", "2326", "2305", "2303", "2380","2321","2309","2313")))
+                                                      levels = c("2422","2421","2482","2418","2417","2462","2481","2404","2425","2409","2480","2463","2403","2460","2401")))
 
-color_mapping <- c("2313" = "#FF7F00", "2309" = "#FDBF6F", "2321" = "#E31A1C", "2380" = "#FB9A99", 
-                            "2303" = "#33A02C", "2305" = "#B2DF8A", "2326" = "#1F78B4", "2361" = "#A6CEE3")
+color_mapping <- c("2422" = "#800000","2421" = "#9A6324","2482"="#808000","2418"="#469990","2417"="#000075","2462"="#E6194B","2481"="#F58231","2404"="#FFE119","2425"="#3CB44B","2409"="#4363D8","2480"="#911EB4","2463"="#F032E6","2403"="#A9A9A9","2460"="#FABED4","2401"="#DCBEFF")
 
-ggplot(df_22_omrade, aes(x = ssyk3_text, y = total_vac, fill = factor(workplace_address.municipality_code, levels = c("2361", "2326", "2305", "2303", "2380","2321","2309","2313")))) +
+
+ggplot(df_22_omrade, aes(x = ssyk3_text, y = total_vac, fill = 
+                           factor(workplace_address.municipality_code, levels = c("2422","2421","2482","2418","2417","2462","2481","2404","2425","2409","2480","2463","2403","2460","2401")))) +
   geom_col() +
   scale_fill_manual(values=color_mapping, guide = guide_legend(reverse = TRUE)) +
   #scale_fill_viridis(discrete = TRUE, direction = 1, guide = guide_legend(reverse = TRUE)) +
@@ -1762,7 +1804,7 @@ ggplot(df_22_omrade, aes(x = ssyk3_text, y = total_vac, fill = factor(workplace_
 
 
 ```
-*Kommunkod: 2313 - Strömsund, 2309 - Krokom, 2321 - Åre, 2380 - Östersund, 2303 - Ragunda, 2305 - Bräcke, 2326 - Berg, 2361 - Härjedalen. För att underlätta läsning av diagrammet har 'klossar' införts - varje kloss motsvarar 50 tjänster.*
+*Kommunkod: 2422 - Sorsele, 2421 - Storuman, 2482 - Skellefteå, 2418 - Malå, 2417 - Norsjö, 2462 - Vilhelmina, 2481 - Lycksele, 2404 - Vindeln, 2425 - Dorotea, 2409 - Robertsfors, 2480 - Umeå, 2463 - Åsele, 2403 - Bjurholm, 2460 - Vännäs, 2401 - Nordmaling. För att underlätta läsning av diagrammet har 'klossar' införts - varje kloss motsvarar 50 tjänster.*
 
 <br>
 
@@ -1834,18 +1876,12 @@ gg<-ggplot(df_22_omrade_kval, aes(x = ssyk3_text, y = total_vac, fill = factor(k
 ```{r omradeNa_SSYK_kommun_22, message=FALSE, warning=FALSE, fig.align = "center"}
 
 ## Filter on 22
-df_22_omrade <- filter(df, occupation_field.label == filter)
+df_22_omrade <- filter(df, occupation_field.label == "Naturvetenskap")
 
-# Check if df_22_omrade_kval is empty
-if (nrow(df_22_omrade) == 0) {
-  message("The dataframe is empty. Skipping this chunk.")
-  knitr::opts_chunk$set(error = FALSE)  # Stop chunk execution here
-} else {
-  df_22_omrade <- df_22_omrade %>%
+df_22_omrade <- df_22_omrade %>%
   group_by(ssyk3_text, workplace_address.municipality_code) %>%
   summarize(total_vac = sum(number_of_vacancies, na.rm = TRUE)) %>%
   ungroup()
-
 
 max_value <- df_22_omrade %>%
   group_by(ssyk3_text) %>%
@@ -1860,38 +1896,33 @@ df_22_omrade$total_vac <- as.numeric(df_22_omrade$total_vac)
 df_22_omrade <- df_22_omrade %>%
   mutate(ssyk3_text = forcats::fct_reorder(ssyk3_text, total_vac, .fun = sum),
          workplace_address.municipality_code = factor(workplace_address.municipality_code, 
-                                                      levels = c("2361", "2326", "2305", "2303", "2380","2321","2309","2313")))
+                                                      levels = c("2422","2421","2482","2418","2417","2462","2481","2404","2425","2409","2480","2463","2403","2460","2401")))
 
-color_mapping <- c("2313" = "#FF7F00", "2309" = "#FDBF6F", "2321" = "#E31A1C", "2380" = "#FB9A99", 
-                            "2303" = "#33A02C", "2305" = "#B2DF8A", "2326" = "#1F78B4", "2361" = "#A6CEE3")
+color_mapping <- c("2422" = "#800000","2421" = "#9A6324","2482"="#808000","2418"="#469990","2417"="#000075","2462"="#E6194B","2481"="#F58231","2404"="#FFE119","2425"="#3CB44B","2409"="#4363D8","2480"="#911EB4","2463"="#F032E6","2403"="#A9A9A9","2460"="#FABED4","2401"="#DCBEFF")
 
-gg<-ggplot(df_22_omrade, aes(x = ssyk3_text, y = total_vac, fill = factor(workplace_address.municipality_code, levels = c("2361", "2326", "2305", "2303", "2380","2321","2309","2313")))) +
+
+ggplot(df_22_omrade, aes(x = ssyk3_text, y = total_vac, fill = 
+                           factor(workplace_address.municipality_code, levels = c("2422","2421","2482","2418","2417","2462","2481","2404","2425","2409","2480","2463","2403","2460","2401")))) +
   geom_col() +
   scale_fill_manual(values=color_mapping, guide = guide_legend(reverse = TRUE)) +
   #scale_fill_viridis(discrete = TRUE, direction = 1, guide = guide_legend(reverse = TRUE)) +
+  geom_hline(yintercept = seq(from = 0, to = max_value, by = 50), color = "white") +
   theme_tufte() +
   theme(plot.title = element_text(size = 14, face = "bold"),
         legend.title = element_blank(),
         legend.position = "bottom",
         axis.ticks.x = element_blank()) +
   labs(title = "Lediga tjänster",
-       subtitle = sprintf("%s, SSYK3 - %s",filter, geografi),
+       subtitle = sprintf("Naturbruk, SSYK3 - %s", geografi),
        y = "Tjänster",
        x = "",
        caption = "Källa: Af och bearbetningar av Region Västernorrland") +
   scale_y_continuous(labels = number_format(accuracy = 1))+
   coord_flip()
 
-  # Check if df_22_omrade_kval is not empty before adding geom_hline
-  if (!is_empty(df_22_omrade_kval)) {
-    gg <- gg + geom_hline(yintercept = seq(from = 0, to = max_value, by = 50), color = "white")
-  }
 
-  gg  # Display the plot
-
-}
 ```
-*Kommunkod: 2313 - Strömsund, 2309 - Krokom, 2321 - Åre, 2380 - Östersund, 2303 - Ragunda, 2305 - Bräcke, 2326 - Berg, 2361 - Härjedalen. För att underlätta läsning av diagrammet har 'klossar' införts - varje kloss motsvarar 50 tjänster.*
+*Kommunkod: 2422 - Sorsele, 2421 - Storuman, 2482 - Skellefteå, 2418 - Malå, 2417 - Norsjö, 2462 - Vilhelmina, 2481 - Lycksele, 2404 - Vindeln, 2425 - Dorotea, 2409 - Robertsfors, 2480 - Umeå, 2463 - Åsele, 2403 - Bjurholm, 2460 - Vännäs, 2401 - Nordmaling. För att underlätta läsning av diagrammet har 'klossar' införts - varje kloss motsvarar 50 tjänster.*
 
 <br>
 
@@ -1968,12 +1999,13 @@ df_22_omrade$total_vac <- as.numeric(df_22_omrade$total_vac)
 df_22_omrade <- df_22_omrade %>%
   mutate(ssyk3_text = forcats::fct_reorder(ssyk3_text, total_vac, .fun = sum),
          workplace_address.municipality_code = factor(workplace_address.municipality_code, 
-                                                      levels = c("2361", "2326", "2305", "2303", "2380","2321","2309","2313")))
+                                                      levels = c("2422","2421","2482","2418","2417","2462","2481","2404","2425","2409","2480","2463","2403","2460","2401")))
 
-color_mapping <- c("2313" = "#FF7F00", "2309" = "#FDBF6F", "2321" = "#E31A1C", "2380" = "#FB9A99", 
-                            "2303" = "#33A02C", "2305" = "#B2DF8A", "2326" = "#1F78B4", "2361" = "#A6CEE3")
+color_mapping <- c("2422" = "#800000","2421" = "#9A6324","2482"="#808000","2418"="#469990","2417"="#000075","2462"="#E6194B","2481"="#F58231","2404"="#FFE119","2425"="#3CB44B","2409"="#4363D8","2480"="#911EB4","2463"="#F032E6","2403"="#A9A9A9","2460"="#FABED4","2401"="#DCBEFF")
 
-ggplot(df_22_omrade, aes(x = ssyk3_text, y = total_vac, fill = factor(workplace_address.municipality_code, levels = c("2361", "2326", "2305", "2303", "2380","2321","2309","2313")))) +
+
+ggplot(df_22_omrade, aes(x = ssyk3_text, y = total_vac, fill = 
+                           factor(workplace_address.municipality_code, levels = c("2422","2421","2482","2418","2417","2462","2481","2404","2425","2409","2480","2463","2403","2460","2401")))) +
   geom_col() +
   scale_fill_manual(values=color_mapping, guide = guide_legend(reverse = TRUE)) +
   #scale_fill_viridis(discrete = TRUE, direction = 1, guide = guide_legend(reverse = TRUE)) +
@@ -1993,7 +2025,7 @@ ggplot(df_22_omrade, aes(x = ssyk3_text, y = total_vac, fill = factor(workplace_
 
 
 ```
-*Kommunkod: 2313 - Strömsund, 2309 - Krokom, 2321 - Åre, 2380 - Östersund, 2303 - Ragunda, 2305 - Bräcke, 2326 - Berg, 2361 - Härjedalen. För att underlätta läsning av diagrammet har 'klossar' införts - varje kloss motsvarar 50 tjänster.*
+*Kommunkod: 2422 - Sorsele, 2421 - Storuman, 2482 - Skellefteå, 2418 - Malå, 2417 - Norsjö, 2462 - Vilhelmina, 2481 - Lycksele, 2404 - Vindeln, 2425 - Dorotea, 2409 - Robertsfors, 2480 - Umeå, 2463 - Åsele, 2403 - Bjurholm, 2460 - Vännäs, 2401 - Nordmaling. För att underlätta läsning av diagrammet har 'klossar' införts - varje kloss motsvarar 50 tjänster.*
 
 <br>
 
@@ -2091,12 +2123,13 @@ df_22_omrade$total_vac <- as.numeric(df_22_omrade$total_vac)
 df_22_omrade <- df_22_omrade %>%
   mutate(ssyk3_text = forcats::fct_reorder(ssyk3_text, total_vac, .fun = sum),
          workplace_address.municipality_code = factor(workplace_address.municipality_code, 
-                                                      levels = c("2361", "2326", "2305", "2303", "2380","2321","2309","2313")))
+                                                      levels = c("2422","2421","2482","2418","2417","2462","2481","2404","2425","2409","2480","2463","2403","2460","2401")))
 
-color_mapping <- c("2313" = "#FF7F00", "2309" = "#FDBF6F", "2321" = "#E31A1C", "2380" = "#FB9A99", 
-                            "2303" = "#33A02C", "2305" = "#B2DF8A", "2326" = "#1F78B4", "2361" = "#A6CEE3")
+color_mapping <- c("2422" = "#800000","2421" = "#9A6324","2482"="#808000","2418"="#469990","2417"="#000075","2462"="#E6194B","2481"="#F58231","2404"="#FFE119","2425"="#3CB44B","2409"="#4363D8","2480"="#911EB4","2463"="#F032E6","2403"="#A9A9A9","2460"="#FABED4","2401"="#DCBEFF")
 
-gg<-ggplot(df_22_omrade, aes(x = ssyk3_text, y = total_vac, fill = factor(workplace_address.municipality_code, levels = c("2361", "2326", "2305", "2303", "2380","2321","2309","2313")))) +
+
+ggplot(df_22_omrade, aes(x = ssyk3_text, y = total_vac, fill = 
+                           factor(workplace_address.municipality_code, levels = c("2422","2421","2482","2418","2417","2462","2481","2404","2425","2409","2480","2463","2403","2460","2401")))) +
   geom_col() +
   scale_fill_manual(values=color_mapping, guide = guide_legend(reverse = TRUE)) +
   #scale_fill_viridis(discrete = TRUE, direction = 1, guide = guide_legend(reverse = TRUE)) +
@@ -2122,7 +2155,7 @@ gg<-ggplot(df_22_omrade, aes(x = ssyk3_text, y = total_vac, fill = factor(workpl
 
 }
 ```
-*Kommunkod: 2313 - Strömsund, 2309 - Krokom, 2321 - Åre, 2380 - Östersund, 2303 - Ragunda, 2305 - Bräcke, 2326 - Berg, 2361 - Härjedalen. För att underlätta läsning av diagrammet har 'klossar' införts - varje kloss motsvarar 50 tjänster.*
+*Kommunkod: 2422 - Sorsele, 2421 - Storuman, 2482 - Skellefteå, 2418 - Malå, 2417 - Norsjö, 2462 - Vilhelmina, 2481 - Lycksele, 2404 - Vindeln, 2425 - Dorotea, 2409 - Robertsfors, 2480 - Umeå, 2463 - Åsele, 2403 - Bjurholm, 2460 - Vännäs, 2401 - Nordmaling. För att underlätta läsning av diagrammet har 'klossar' införts - varje kloss motsvarar 50 tjänster.*
 
 <br>
 
@@ -2199,12 +2232,13 @@ df_22_omrade$total_vac <- as.numeric(df_22_omrade$total_vac)
 df_22_omrade <- df_22_omrade %>%
   mutate(ssyk3_text = forcats::fct_reorder(ssyk3_text, total_vac, .fun = sum),
          workplace_address.municipality_code = factor(workplace_address.municipality_code, 
-                                                      levels = c("2361", "2326", "2305", "2303", "2380","2321","2309","2313")))
+                                                      levels = c("2422","2421","2482","2418","2417","2462","2481","2404","2425","2409","2480","2463","2403","2460","2401")))
 
-color_mapping <- c("2313" = "#FF7F00", "2309" = "#FDBF6F", "2321" = "#E31A1C", "2380" = "#FB9A99", 
-                            "2303" = "#33A02C", "2305" = "#B2DF8A", "2326" = "#1F78B4", "2361" = "#A6CEE3")
+color_mapping <- c("2422" = "#800000","2421" = "#9A6324","2482"="#808000","2418"="#469990","2417"="#000075","2462"="#E6194B","2481"="#F58231","2404"="#FFE119","2425"="#3CB44B","2409"="#4363D8","2480"="#911EB4","2463"="#F032E6","2403"="#A9A9A9","2460"="#FABED4","2401"="#DCBEFF")
 
-ggplot(df_22_omrade, aes(x = ssyk3_text, y = total_vac, fill = factor(workplace_address.municipality_code, levels = c("2361", "2326", "2305", "2303", "2380","2321","2309","2313")))) +
+
+ggplot(df_22_omrade, aes(x = ssyk3_text, y = total_vac, fill = 
+                           factor(workplace_address.municipality_code, levels = c("2422","2421","2482","2418","2417","2462","2481","2404","2425","2409","2480","2463","2403","2460","2401")))) +
   geom_col() +
   scale_fill_manual(values=color_mapping, guide = guide_legend(reverse = TRUE)) +
   #scale_fill_viridis(discrete = TRUE, direction = 1, guide = guide_legend(reverse = TRUE)) +
@@ -2224,7 +2258,7 @@ ggplot(df_22_omrade, aes(x = ssyk3_text, y = total_vac, fill = factor(workplace_
 
 
 ```
-*Kommunkod: 2313 - Strömsund, 2309 - Krokom, 2321 - Åre, 2380 - Östersund, 2303 - Ragunda, 2305 - Bräcke, 2326 - Berg, 2361 - Härjedalen. För att underlätta läsning av diagrammet har 'klossar' införts - varje kloss motsvarar 50 tjänster.*
+*Kommunkod: 2422 - Sorsele, 2421 - Storuman, 2482 - Skellefteå, 2418 - Malå, 2417 - Norsjö, 2462 - Vilhelmina, 2481 - Lycksele, 2404 - Vindeln, 2425 - Dorotea, 2409 - Robertsfors, 2480 - Umeå, 2463 - Åsele, 2403 - Bjurholm, 2460 - Vännäs, 2401 - Nordmaling. För att underlätta läsning av diagrammet har 'klossar' införts - varje kloss motsvarar 50 tjänster.*
 
 <br>
 
@@ -2302,12 +2336,13 @@ df_22_omrade$total_vac <- as.numeric(df_22_omrade$total_vac)
 df_22_omrade <- df_22_omrade %>%
   mutate(ssyk3_text = forcats::fct_reorder(ssyk3_text, total_vac, .fun = sum),
          workplace_address.municipality_code = factor(workplace_address.municipality_code, 
-                                                      levels = c("2361", "2326", "2305", "2303", "2380","2321","2309","2313")))
+                                                      levels = c("2422","2421","2482","2418","2417","2462","2481","2404","2425","2409","2480","2463","2403","2460","2401")))
 
-color_mapping <- c("2313" = "#FF7F00", "2309" = "#FDBF6F", "2321" = "#E31A1C", "2380" = "#FB9A99", 
-                            "2303" = "#33A02C", "2305" = "#B2DF8A", "2326" = "#1F78B4", "2361" = "#A6CEE3")
+color_mapping <- c("2422" = "#800000","2421" = "#9A6324","2482"="#808000","2418"="#469990","2417"="#000075","2462"="#E6194B","2481"="#F58231","2404"="#FFE119","2425"="#3CB44B","2409"="#4363D8","2480"="#911EB4","2463"="#F032E6","2403"="#A9A9A9","2460"="#FABED4","2401"="#DCBEFF")
 
-ggplot(df_22_omrade, aes(x = ssyk3_text, y = total_vac, fill = factor(workplace_address.municipality_code, levels = c("2361", "2326", "2305", "2303", "2380","2321","2309","2313")))) +
+
+ggplot(df_22_omrade, aes(x = ssyk3_text, y = total_vac, fill = 
+                           factor(workplace_address.municipality_code, levels = c("2422","2421","2482","2418","2417","2462","2481","2404","2425","2409","2480","2463","2403","2460","2401")))) +
   geom_col() +
   scale_fill_manual(values=color_mapping, guide = guide_legend(reverse = TRUE)) +
   #scale_fill_viridis(discrete = TRUE, direction = 1, guide = guide_legend(reverse = TRUE)) +
@@ -2327,8 +2362,7 @@ ggplot(df_22_omrade, aes(x = ssyk3_text, y = total_vac, fill = factor(workplace_
 
 
 ```
-*Kommunkod: 2313 - Strömsund, 2309 - Krokom, 2321 - Åre, 2380 - Östersund, 2303 - Ragunda, 2305 - Bräcke, 2326 - Berg, 2361 - Härjedalen. För att underlätta läsning av diagrammet har 'klossar' införts - varje kloss motsvarar 50 tjänster.*
-
+*Kommunkod: 2422 - Sorsele, 2421 - Storuman, 2482 - Skellefteå, 2418 - Malå, 2417 - Norsjö, 2462 - Vilhelmina, 2481 - Lycksele, 2404 - Vindeln, 2425 - Dorotea, 2409 - Robertsfors, 2480 - Umeå, 2463 - Åsele, 2403 - Bjurholm, 2460 - Vännäs, 2401 - Nordmaling. För att underlätta läsning av diagrammet har 'klossar' införts - varje kloss motsvarar 50 tjänster.*
 <br>
 
 ## Säkerhet och bevakning
@@ -2404,12 +2438,13 @@ df_22_omrade$total_vac <- as.numeric(df_22_omrade$total_vac)
 df_22_omrade <- df_22_omrade %>%
   mutate(ssyk3_text = forcats::fct_reorder(ssyk3_text, total_vac, .fun = sum),
          workplace_address.municipality_code = factor(workplace_address.municipality_code, 
-                                                      levels = c("2361", "2326", "2305", "2303", "2380","2321","2309","2313")))
+                                                      levels = c("2422","2421","2482","2418","2417","2462","2481","2404","2425","2409","2480","2463","2403","2460","2401")))
 
-color_mapping <- c("2313" = "#FF7F00", "2309" = "#FDBF6F", "2321" = "#E31A1C", "2380" = "#FB9A99", 
-                            "2303" = "#33A02C", "2305" = "#B2DF8A", "2326" = "#1F78B4", "2361" = "#A6CEE3")
+color_mapping <- c("2422" = "#800000","2421" = "#9A6324","2482"="#808000","2418"="#469990","2417"="#000075","2462"="#E6194B","2481"="#F58231","2404"="#FFE119","2425"="#3CB44B","2409"="#4363D8","2480"="#911EB4","2463"="#F032E6","2403"="#A9A9A9","2460"="#FABED4","2401"="#DCBEFF")
 
-ggplot(df_22_omrade, aes(x = ssyk3_text, y = total_vac, fill = factor(workplace_address.municipality_code, levels = c("2361", "2326", "2305", "2303", "2380","2321","2309","2313")))) +
+
+ggplot(df_22_omrade, aes(x = ssyk3_text, y = total_vac, fill = 
+                           factor(workplace_address.municipality_code, levels = c("2422","2421","2482","2418","2417","2462","2481","2404","2425","2409","2480","2463","2403","2460","2401")))) +
   geom_col() +
   scale_fill_manual(values=color_mapping, guide = guide_legend(reverse = TRUE)) +
   #scale_fill_viridis(discrete = TRUE, direction = 1, guide = guide_legend(reverse = TRUE)) +
@@ -2429,7 +2464,7 @@ ggplot(df_22_omrade, aes(x = ssyk3_text, y = total_vac, fill = factor(workplace_
 
 
 ```
-*Kommunkod: 2313 - Strömsund, 2309 - Krokom, 2321 - Åre, 2380 - Östersund, 2303 - Ragunda, 2305 - Bräcke, 2326 - Berg, 2361 - Härjedalen. För att underlätta läsning av diagrammet har 'klossar' införts - varje kloss motsvarar 50 tjänster.*
+*Kommunkod: 2422 - Sorsele, 2421 - Storuman, 2482 - Skellefteå, 2418 - Malå, 2417 - Norsjö, 2462 - Vilhelmina, 2481 - Lycksele, 2404 - Vindeln, 2425 - Dorotea, 2409 - Robertsfors, 2480 - Umeå, 2463 - Åsele, 2403 - Bjurholm, 2460 - Vännäs, 2401 - Nordmaling. För att underlätta läsning av diagrammet har 'klossar' införts - varje kloss motsvarar 50 tjänster.*
 
 <br>
 
@@ -2506,12 +2541,13 @@ df_22_omrade$total_vac <- as.numeric(df_22_omrade$total_vac)
 df_22_omrade <- df_22_omrade %>%
   mutate(ssyk3_text = forcats::fct_reorder(ssyk3_text, total_vac, .fun = sum),
          workplace_address.municipality_code = factor(workplace_address.municipality_code, 
-                                                      levels = c("2361", "2326", "2305", "2303", "2380","2321","2309","2313")))
+                                                      levels = c("2422","2421","2482","2418","2417","2462","2481","2404","2425","2409","2480","2463","2403","2460","2401")))
 
-color_mapping <- c("2313" = "#FF7F00", "2309" = "#FDBF6F", "2321" = "#E31A1C", "2380" = "#FB9A99", 
-                            "2303" = "#33A02C", "2305" = "#B2DF8A", "2326" = "#1F78B4", "2361" = "#A6CEE3")
+color_mapping <- c("2422" = "#800000","2421" = "#9A6324","2482"="#808000","2418"="#469990","2417"="#000075","2462"="#E6194B","2481"="#F58231","2404"="#FFE119","2425"="#3CB44B","2409"="#4363D8","2480"="#911EB4","2463"="#F032E6","2403"="#A9A9A9","2460"="#FABED4","2401"="#DCBEFF")
 
-ggplot(df_22_omrade, aes(x = ssyk3_text, y = total_vac, fill = factor(workplace_address.municipality_code, levels = c("2361", "2326", "2305", "2303", "2380","2321","2309","2313")))) +
+
+ggplot(df_22_omrade, aes(x = ssyk3_text, y = total_vac, fill = 
+                           factor(workplace_address.municipality_code, levels = c("2422","2421","2482","2418","2417","2462","2481","2404","2425","2409","2480","2463","2403","2460","2401")))) +
   geom_col() +
   scale_fill_manual(values=color_mapping, guide = guide_legend(reverse = TRUE)) +
   #scale_fill_viridis(discrete = TRUE, direction = 1, guide = guide_legend(reverse = TRUE)) +
@@ -2531,7 +2567,7 @@ ggplot(df_22_omrade, aes(x = ssyk3_text, y = total_vac, fill = factor(workplace_
 
 
 ```
-*Kommunkod: 2313 - Strömsund, 2309 - Krokom, 2321 - Åre, 2380 - Östersund, 2303 - Ragunda, 2305 - Bräcke, 2326 - Berg, 2361 - Härjedalen. För att underlätta läsning av diagrammet har 'klossar' införts - varje kloss motsvarar 50 tjänster.*
+*Kommunkod: 2422 - Sorsele, 2421 - Storuman, 2482 - Skellefteå, 2418 - Malå, 2417 - Norsjö, 2462 - Vilhelmina, 2481 - Lycksele, 2404 - Vindeln, 2425 - Dorotea, 2409 - Robertsfors, 2480 - Umeå, 2463 - Åsele, 2403 - Bjurholm, 2460 - Vännäs, 2401 - Nordmaling. För att underlätta läsning av diagrammet har 'klossar' införts - varje kloss motsvarar 50 tjänster.*
 
 <br>
 
@@ -2608,12 +2644,13 @@ df_22_omrade$total_vac <- as.numeric(df_22_omrade$total_vac)
 df_22_omrade <- df_22_omrade %>%
   mutate(ssyk3_text = forcats::fct_reorder(ssyk3_text, total_vac, .fun = sum),
          workplace_address.municipality_code = factor(workplace_address.municipality_code, 
-                                                      levels = c("2361", "2326", "2305", "2303", "2380","2321","2309","2313")))
+                                                      levels = c("2422","2421","2482","2418","2417","2462","2481","2404","2425","2409","2480","2463","2403","2460","2401")))
 
-color_mapping <- c("2313" = "#FF7F00", "2309" = "#FDBF6F", "2321" = "#E31A1C", "2380" = "#FB9A99", 
-                            "2303" = "#33A02C", "2305" = "#B2DF8A", "2326" = "#1F78B4", "2361" = "#A6CEE3")
+color_mapping <- c("2422" = "#800000","2421" = "#9A6324","2482"="#808000","2418"="#469990","2417"="#000075","2462"="#E6194B","2481"="#F58231","2404"="#FFE119","2425"="#3CB44B","2409"="#4363D8","2480"="#911EB4","2463"="#F032E6","2403"="#A9A9A9","2460"="#FABED4","2401"="#DCBEFF")
 
-ggplot(df_22_omrade, aes(x = ssyk3_text, y = total_vac, fill = factor(workplace_address.municipality_code, levels = c("2361", "2326", "2305", "2303", "2380","2321","2309","2313")))) +
+
+ggplot(df_22_omrade, aes(x = ssyk3_text, y = total_vac, fill = 
+                           factor(workplace_address.municipality_code, levels = c("2422","2421","2482","2418","2417","2462","2481","2404","2425","2409","2480","2463","2403","2460","2401")))) +
   geom_col() +
   scale_fill_manual(values=color_mapping, guide = guide_legend(reverse = TRUE)) +
   #scale_fill_viridis(discrete = TRUE, direction = 1, guide = guide_legend(reverse = TRUE)) +
@@ -2632,7 +2669,7 @@ ggplot(df_22_omrade, aes(x = ssyk3_text, y = total_vac, fill = factor(workplace_
   coord_flip()
 
 ```
-*Kommunkod: 2313 - Strömsund, 2309 - Krokom, 2321 - Åre, 2380 - Östersund, 2303 - Ragunda, 2305 - Bräcke, 2326 - Berg, 2361 - Härjedalen. För att underlätta läsning av diagrammet har 'klossar' införts - varje kloss motsvarar 50 tjänster.*
+*Kommunkod: 2422 - Sorsele, 2421 - Storuman, 2482 - Skellefteå, 2418 - Malå, 2417 - Norsjö, 2462 - Vilhelmina, 2481 - Lycksele, 2404 - Vindeln, 2425 - Dorotea, 2409 - Robertsfors, 2480 - Umeå, 2463 - Åsele, 2403 - Bjurholm, 2460 - Vännäs, 2401 - Nordmaling. För att underlätta läsning av diagrammet har 'klossar' införts - varje kloss motsvarar 50 tjänster.*
 
 <br>
 
@@ -2662,13 +2699,15 @@ df_22_ssyk1$total_vac <- as.numeric(df_22_ssyk1$total_vac)
 df_22_ssyk1 <- df_22_ssyk1 %>%
   mutate(ssyk1_text = forcats::fct_reorder(ssyk1_text, total_vac, .fun = sum),
          workplace_address.municipality_code = factor(workplace_address.municipality_code, 
-        levels = c("2361", "2326", "2305", "2303", "2380","2321","2309","2313")))
+                                                      levels = c("2422","2421","2482","2418","2417","2462","2481","2404","2425","2409","2480","2463","2403","2460","2401")))
 
 
-color_mapping <- c("2313" = "#FF7F00", "2309" = "#FDBF6F", "2321" = "#E31A1C", "2380" = "#FB9A99", 
-                   "2303" = "#33A02C", "2305" = "#B2DF8A", "2326" = "#1F78B4", "2361" = "#A6CEE3")
 
-ggplot(df_22_ssyk1, aes(x = ssyk1_text, y = total_vac, fill = factor(workplace_address.municipality_code, levels = c("2361", "2326", "2305", "2303", "2380","2321","2309","2313")))) +
+color_mapping <- c("2422" = "#800000","2421" = "#9A6324","2482"="#808000","2418"="#469990","2417"="#000075","2462"="#E6194B","2481"="#F58231","2404"="#FFE119","2425"="#3CB44B","2409"="#4363D8","2480"="#911EB4","2463"="#F032E6","2403"="#A9A9A9","2460"="#FABED4","2401"="#DCBEFF")
+
+
+ggplot(df_22_ssyk1, aes(x = ssyk1_text, y = total_vac, fill = 
+                          factor(workplace_address.municipality_code, levels = c("2422","2421","2482","2418","2417","2462","2481","2404","2425","2409","2480","2463","2403","2460","2401")))) +
   geom_col() +
   scale_fill_manual(values=color_mapping, guide = guide_legend(reverse = TRUE)) +
   geom_hline(yintercept = seq(from = 0, to = max_value, by = 50), color = "white") +
@@ -2684,7 +2723,7 @@ ggplot(df_22_ssyk1, aes(x = ssyk1_text, y = total_vac, fill = factor(workplace_a
        caption = "Källa: Af och bearbetningar av Region Västernorrland") +
   coord_flip()
 ```
-*Kommunkod: 2313 - Strömsund, 2309 - Krokom, 2321 - Åre, 2380 - Östersund, 2303 - Ragunda, 2305 - Bräcke, 2326 - Berg, 2361 - Härjedalen. För att underlätta läsning av diagrammet har 'klossar' införts - varje kloss motsvarar 50 tjänster.*
+*Kommunkod: 2422 - Sorsele, 2421 - Storuman, 2482 - Skellefteå, 2418 - Malå, 2417 - Norsjö, 2462 - Vilhelmina, 2481 - Lycksele, 2404 - Vindeln, 2425 - Dorotea, 2409 - Robertsfors, 2480 - Umeå, 2463 - Åsele, 2403 - Bjurholm, 2460 - Vännäs, 2401 - Nordmaling. För att underlätta läsning av diagrammet har 'klossar' införts - varje kloss motsvarar 50 tjänster.*
 
 <br>
 
@@ -2711,12 +2750,14 @@ df_22_ssyk1_2_omrade$total_vac <- as.numeric(df_22_ssyk1_2_omrade$total_vac)
 df_22_ssyk1_2_omrade <- df_22_ssyk1_2_omrade %>%
   mutate(occupation_field.label = forcats::fct_reorder(occupation_field.label, total_vac, .fun = sum),
          workplace_address.municipality_code = factor(workplace_address.municipality_code, 
-        levels = c("2361", "2326", "2305", "2303", "2380","2321","2309","2313")))
+        levels = c("2422","2421","2482","2418","2417","2462","2481","2404","2425","2409","2480","2463","2403","2460","2401")))
 
-color_mapping <- c("2313" = "#FF7F00", "2309" = "#FDBF6F", "2321" = "#E31A1C", "2380" = "#FB9A99", 
-                   "2303" = "#33A02C", "2305" = "#B2DF8A", "2326" = "#1F78B4", "2361" = "#A6CEE3")
 
-ggplot(df_22_ssyk1_2_omrade, aes(x = occupation_field.label, y = total_vac, fill = factor(workplace_address.municipality_code, levels = c("2361", "2326", "2305", "2303", "2380","2321","2309","2313")))) +
+
+color_mapping <- c("2422" = "#800000","2421" = "#9A6324","2482"="#808000","2418"="#469990","2417"="#000075","2462"="#E6194B","2481"="#F58231","2404"="#FFE119","2425"="#3CB44B","2409"="#4363D8","2480"="#911EB4","2463"="#F032E6","2403"="#A9A9A9","2460"="#FABED4","2401"="#DCBEFF")
+
+
+ggplot(df_22_ssyk1_2_omrade, aes(x = occupation_field.label, y = total_vac, fill = factor(workplace_address.municipality_code, levels = c("2422","2421","2482","2418","2417","2462","2481","2404","2425","2409","2480","2463","2403","2460","2401")))) +
   geom_col() +
   scale_fill_manual(values=color_mapping, guide = guide_legend(reverse = TRUE)) +
   geom_hline(yintercept = seq(from = 0, to = max_value, by = 50), color = "white") +
@@ -2732,7 +2773,7 @@ ggplot(df_22_ssyk1_2_omrade, aes(x = occupation_field.label, y = total_vac, fill
        caption = "Källa: Af och bearbetningar av Region Västernorrland") +
   coord_flip()
 ```
-*Kommunkod: 2313 - Strömsund, 2309 - Krokom, 2321 - Åre, 2380 - Östersund, 2303 - Ragunda, 2305 - Bräcke, 2326 - Berg, 2361 - Härjedalen. För att underlätta läsning av diagrammet har 'klossar' införts - varje kloss motsvarar 50 tjänster.*
+*Kommunkod: 2422 - Sorsele, 2421 - Storuman, 2482 - Skellefteå, 2418 - Malå, 2417 - Norsjö, 2462 - Vilhelmina, 2481 - Lycksele, 2404 - Vindeln, 2425 - Dorotea, 2409 - Robertsfors, 2480 - Umeå, 2463 - Åsele, 2403 - Bjurholm, 2460 - Vännäs, 2401 - Nordmaling. För att underlätta läsning av diagrammet har 'klossar' införts - varje kloss motsvarar 50 tjänster.*
 
 <br>
 
@@ -2797,12 +2838,14 @@ df_22_ssyk1_2_omrade$total_vac <- as.numeric(df_22_ssyk1_2_omrade$total_vac)
 df_22_ssyk1_2_omrade <- df_22_ssyk1_2_omrade %>%
   mutate(occupation_field.label = forcats::fct_reorder(occupation_field.label, total_vac, .fun = sum),
          workplace_address.municipality_code = factor(workplace_address.municipality_code, 
-                                                      levels = c("2361", "2326", "2305", "2303", "2380","2321","2309","2313")))
+        levels = c("2422","2421","2482","2418","2417","2462","2481","2404","2425","2409","2480","2463","2403","2460","2401")))
 
-color_mapping <- c("2313" = "#FF7F00", "2309" = "#FDBF6F", "2321" = "#E31A1C", "2380" = "#FB9A99", 
-                   "2303" = "#33A02C", "2305" = "#B2DF8A", "2326" = "#1F78B4", "2361" = "#A6CEE3")
 
-ggplot(df_22_ssyk1_2_omrade, aes(x = occupation_field.label, y = total_vac, fill = factor(workplace_address.municipality_code, levels = c("2361", "2326", "2305", "2303", "2380","2321","2309","2313")))) +
+
+color_mapping <- c("2422" = "#800000","2421" = "#9A6324","2482"="#808000","2418"="#469990","2417"="#000075","2462"="#E6194B","2481"="#F58231","2404"="#FFE119","2425"="#3CB44B","2409"="#4363D8","2480"="#911EB4","2463"="#F032E6","2403"="#A9A9A9","2460"="#FABED4","2401"="#DCBEFF")
+
+
+ggplot(df_22_ssyk1_2_omrade, aes(x = occupation_field.label, y = total_vac, fill = factor(workplace_address.municipality_code, levels = c("2422","2421","2482","2418","2417","2462","2481","2404","2425","2409","2480","2463","2403","2460","2401")))) +
   geom_col() +
   scale_fill_manual(values=color_mapping, guide = guide_legend(reverse = TRUE)) +
   geom_hline(yintercept = seq(from = 0, to = max_value, by = 50), color = "white") +
@@ -2818,7 +2861,7 @@ ggplot(df_22_ssyk1_2_omrade, aes(x = occupation_field.label, y = total_vac, fill
        caption = "Källa: Af och bearbetningar av Region Västernorrland") +
   coord_flip()
 ```
-*Kommunkod: 2313 - Strömsund, 2309 - Krokom, 2321 - Åre, 2380 - Östersund, 2303 - Ragunda, 2305 - Bräcke, 2326 - Berg, 2361 - Härjedalen. För att underlätta läsning av diagrammet har 'klossar' införts - varje kloss motsvarar 50 tjänster.*
+*Kommunkod: 2422 - Sorsele, 2421 - Storuman, 2482 - Skellefteå, 2418 - Malå, 2417 - Norsjö, 2462 - Vilhelmina, 2481 - Lycksele, 2404 - Vindeln, 2425 - Dorotea, 2409 - Robertsfors, 2480 - Umeå, 2463 - Åsele, 2403 - Bjurholm, 2460 - Vännäs, 2401 - Nordmaling. För att underlätta läsning av diagrammet har 'klossar' införts - varje kloss motsvarar 50 tjänster.*
 
 <br>
 
@@ -2882,12 +2925,14 @@ df_22_ssyk1_2_omrade$total_vac <- as.numeric(df_22_ssyk1_2_omrade$total_vac)
 df_22_ssyk1_2_omrade <- df_22_ssyk1_2_omrade %>%
   mutate(occupation_field.label = forcats::fct_reorder(occupation_field.label, total_vac, .fun = sum),
          workplace_address.municipality_code = factor(workplace_address.municipality_code, 
-                                                      levels = c("2361", "2326", "2305", "2303", "2380","2321","2309","2313")))
+        levels = c("2422","2421","2482","2418","2417","2462","2481","2404","2425","2409","2480","2463","2403","2460","2401")))
 
-color_mapping <- c("2313" = "#FF7F00", "2309" = "#FDBF6F", "2321" = "#E31A1C", "2380" = "#FB9A99", 
-                   "2303" = "#33A02C", "2305" = "#B2DF8A", "2326" = "#1F78B4", "2361" = "#A6CEE3")
 
-ggplot(df_22_ssyk1_2_omrade, aes(x = occupation_field.label, y = total_vac, fill = factor(workplace_address.municipality_code, levels = c("2361", "2326", "2305", "2303", "2380","2321","2309","2313")))) +
+
+color_mapping <- c("2422" = "#800000","2421" = "#9A6324","2482"="#808000","2418"="#469990","2417"="#000075","2462"="#E6194B","2481"="#F58231","2404"="#FFE119","2425"="#3CB44B","2409"="#4363D8","2480"="#911EB4","2463"="#F032E6","2403"="#A9A9A9","2460"="#FABED4","2401"="#DCBEFF")
+
+
+ggplot(df_22_ssyk1_2_omrade, aes(x = occupation_field.label, y = total_vac, fill = factor(workplace_address.municipality_code, levels = c("2422","2421","2482","2418","2417","2462","2481","2404","2425","2409","2480","2463","2403","2460","2401")))) +
   geom_col() +
   scale_fill_manual(values=color_mapping, guide = guide_legend(reverse = TRUE)) +
   geom_hline(yintercept = seq(from = 0, to = max_value, by = 50), color = "white") +
@@ -2903,7 +2948,7 @@ ggplot(df_22_ssyk1_2_omrade, aes(x = occupation_field.label, y = total_vac, fill
        caption = "Källa: Af och bearbetningar av Region Västernorrland") +
   coord_flip()
 ```
-*Kommunkod: 2313 - Strömsund, 2309 - Krokom, 2321 - Åre, 2380 - Östersund, 2303 - Ragunda, 2305 - Bräcke, 2326 - Berg, 2361 - Härjedalen. För att underlätta läsning av diagrammet har 'klossar' införts - varje kloss motsvarar 50 tjänster.*
+*Kommunkod: 2422 - Sorsele, 2421 - Storuman, 2482 - Skellefteå, 2418 - Malå, 2417 - Norsjö, 2462 - Vilhelmina, 2481 - Lycksele, 2404 - Vindeln, 2425 - Dorotea, 2409 - Robertsfors, 2480 - Umeå, 2463 - Åsele, 2403 - Bjurholm, 2460 - Vännäs, 2401 - Nordmaling. För att underlätta läsning av diagrammet har 'klossar' införts - varje kloss motsvarar 50 tjänster.*
 
 <br>
 
@@ -2967,12 +3012,14 @@ df_22_ssyk1_2_omrade$total_vac <- as.numeric(df_22_ssyk1_2_omrade$total_vac)
 df_22_ssyk1_2_omrade <- df_22_ssyk1_2_omrade %>%
   mutate(occupation_field.label = forcats::fct_reorder(occupation_field.label, total_vac, .fun = sum),
          workplace_address.municipality_code = factor(workplace_address.municipality_code, 
-                                                      levels = c("2361", "2326", "2305", "2303", "2380","2321","2309","2313")))
+        levels = c("2422","2421","2482","2418","2417","2462","2481","2404","2425","2409","2480","2463","2403","2460","2401")))
 
-color_mapping <- c("2313" = "#FF7F00", "2309" = "#FDBF6F", "2321" = "#E31A1C", "2380" = "#FB9A99", 
-                   "2303" = "#33A02C", "2305" = "#B2DF8A", "2326" = "#1F78B4", "2361" = "#A6CEE3")
 
-ggplot(df_22_ssyk1_2_omrade, aes(x = occupation_field.label, y = total_vac, fill = factor(workplace_address.municipality_code, levels = c("2361", "2326", "2305", "2303", "2380","2321","2309","2313")))) +
+
+color_mapping <- c("2422" = "#800000","2421" = "#9A6324","2482"="#808000","2418"="#469990","2417"="#000075","2462"="#E6194B","2481"="#F58231","2404"="#FFE119","2425"="#3CB44B","2409"="#4363D8","2480"="#911EB4","2463"="#F032E6","2403"="#A9A9A9","2460"="#FABED4","2401"="#DCBEFF")
+
+
+ggplot(df_22_ssyk1_2_omrade, aes(x = occupation_field.label, y = total_vac, fill = factor(workplace_address.municipality_code, levels = c("2422","2421","2482","2418","2417","2462","2481","2404","2425","2409","2480","2463","2403","2460","2401")))) +
   geom_col() +
   scale_fill_manual(values=color_mapping, guide = guide_legend(reverse = TRUE)) +
   geom_hline(yintercept = seq(from = 0, to = max_value, by = 50), color = "white") +
@@ -2988,7 +3035,7 @@ ggplot(df_22_ssyk1_2_omrade, aes(x = occupation_field.label, y = total_vac, fill
        caption = "Källa: Af och bearbetningar av Region Västernorrland") +
   coord_flip()
 ```
-*Kommunkod: 2313 - Strömsund, 2309 - Krokom, 2321 - Åre, 2380 - Östersund, 2303 - Ragunda, 2305 - Bräcke, 2326 - Berg, 2361 - Härjedalen. För att underlätta läsning av diagrammet har 'klossar' införts - varje kloss motsvarar 50 tjänster.*
+*Kommunkod: 2422 - Sorsele, 2421 - Storuman, 2482 - Skellefteå, 2418 - Malå, 2417 - Norsjö, 2462 - Vilhelmina, 2481 - Lycksele, 2404 - Vindeln, 2425 - Dorotea, 2409 - Robertsfors, 2480 - Umeå, 2463 - Åsele, 2403 - Bjurholm, 2460 - Vännäs, 2401 - Nordmaling. För att underlätta läsning av diagrammet har 'klossar' införts - varje kloss motsvarar 50 tjänster.*
 
 <br>
 
@@ -3052,12 +3099,14 @@ df_22_ssyk1_2_omrade$total_vac <- as.numeric(df_22_ssyk1_2_omrade$total_vac)
 df_22_ssyk1_2_omrade <- df_22_ssyk1_2_omrade %>%
   mutate(occupation_field.label = forcats::fct_reorder(occupation_field.label, total_vac, .fun = sum),
          workplace_address.municipality_code = factor(workplace_address.municipality_code, 
-                                                      levels = c("2361", "2326", "2305", "2303", "2380","2321","2309","2313")))
+        levels = c("2422","2421","2482","2418","2417","2462","2481","2404","2425","2409","2480","2463","2403","2460","2401")))
 
-color_mapping <- c("2313" = "#FF7F00", "2309" = "#FDBF6F", "2321" = "#E31A1C", "2380" = "#FB9A99", 
-                   "2303" = "#33A02C", "2305" = "#B2DF8A", "2326" = "#1F78B4", "2361" = "#A6CEE3")
 
-ggplot(df_22_ssyk1_2_omrade, aes(x = occupation_field.label, y = total_vac, fill = factor(workplace_address.municipality_code, levels = c("2361", "2326", "2305", "2303", "2380","2321","2309","2313")))) +
+
+color_mapping <- c("2422" = "#800000","2421" = "#9A6324","2482"="#808000","2418"="#469990","2417"="#000075","2462"="#E6194B","2481"="#F58231","2404"="#FFE119","2425"="#3CB44B","2409"="#4363D8","2480"="#911EB4","2463"="#F032E6","2403"="#A9A9A9","2460"="#FABED4","2401"="#DCBEFF")
+
+
+ggplot(df_22_ssyk1_2_omrade, aes(x = occupation_field.label, y = total_vac, fill = factor(workplace_address.municipality_code, levels = c("2422","2421","2482","2418","2417","2462","2481","2404","2425","2409","2480","2463","2403","2460","2401")))) +
   geom_col() +
   scale_fill_manual(values=color_mapping, guide = guide_legend(reverse = TRUE)) +
   geom_hline(yintercept = seq(from = 0, to = max_value, by = 50), color = "white") +
@@ -3073,7 +3122,7 @@ ggplot(df_22_ssyk1_2_omrade, aes(x = occupation_field.label, y = total_vac, fill
        caption = "Källa: Af och bearbetningar av Region Västernorrland") +
   coord_flip()
 ```
-*Kommunkod: 2313 - Strömsund, 2309 - Krokom, 2321 - Åre, 2380 - Östersund, 2303 - Ragunda, 2305 - Bräcke, 2326 - Berg, 2361 - Härjedalen. För att underlätta läsning av diagrammet har 'klossar' införts - varje kloss motsvarar 50 tjänster.*
+*Kommunkod: 2422 - Sorsele, 2421 - Storuman, 2482 - Skellefteå, 2418 - Malå, 2417 - Norsjö, 2462 - Vilhelmina, 2481 - Lycksele, 2404 - Vindeln, 2425 - Dorotea, 2409 - Robertsfors, 2480 - Umeå, 2463 - Åsele, 2403 - Bjurholm, 2460 - Vännäs, 2401 - Nordmaling. För att underlätta läsning av diagrammet har 'klossar' införts - varje kloss motsvarar 50 tjänster.*
 
 <br>
 
@@ -3139,12 +3188,14 @@ df_22_ssyk1_2_omrade$total_vac <- as.numeric(df_22_ssyk1_2_omrade$total_vac)
 df_22_ssyk1_2_omrade <- df_22_ssyk1_2_omrade %>%
   mutate(occupation_field.label = forcats::fct_reorder(occupation_field.label, total_vac, .fun = sum),
          workplace_address.municipality_code = factor(workplace_address.municipality_code, 
-                                                      levels = c("2361", "2326", "2305", "2303", "2380","2321","2309","2313")))
+        levels = c("2422","2421","2482","2418","2417","2462","2481","2404","2425","2409","2480","2463","2403","2460","2401")))
 
-color_mapping <- c("2313" = "#FF7F00", "2309" = "#FDBF6F", "2321" = "#E31A1C", "2380" = "#FB9A99", 
-                   "2303" = "#33A02C", "2305" = "#B2DF8A", "2326" = "#1F78B4", "2361" = "#A6CEE3")
 
-ggplot(df_22_ssyk1_2_omrade, aes(x = occupation_field.label, y = total_vac, fill = factor(workplace_address.municipality_code, levels = c("2361", "2326", "2305", "2303", "2380","2321","2309","2313")))) +
+
+color_mapping <- c("2422" = "#800000","2421" = "#9A6324","2482"="#808000","2418"="#469990","2417"="#000075","2462"="#E6194B","2481"="#F58231","2404"="#FFE119","2425"="#3CB44B","2409"="#4363D8","2480"="#911EB4","2463"="#F032E6","2403"="#A9A9A9","2460"="#FABED4","2401"="#DCBEFF")
+
+
+ggplot(df_22_ssyk1_2_omrade, aes(x = occupation_field.label, y = total_vac, fill = factor(workplace_address.municipality_code, levels = c("2422","2421","2482","2418","2417","2462","2481","2404","2425","2409","2480","2463","2403","2460","2401")))) +
   geom_col() +
   scale_fill_manual(values=color_mapping, guide = guide_legend(reverse = TRUE)) +
   geom_hline(yintercept = seq(from = 0, to = max_value, by = 50), color = "white") +
@@ -3161,7 +3212,7 @@ ggplot(df_22_ssyk1_2_omrade, aes(x = occupation_field.label, y = total_vac, fill
   scale_y_continuous(labels = number_format(accuracy = 1))+
   coord_flip()
 ```
-*Kommunkod: 2313 - Strömsund, 2309 - Krokom, 2321 - Åre, 2380 - Östersund, 2303 - Ragunda, 2305 - Bräcke, 2326 - Berg, 2361 - Härjedalen. För att underlätta läsning av diagrammet har 'klossar' införts - varje kloss motsvarar 50 tjänster.*
+*Kommunkod: 2422 - Sorsele, 2421 - Storuman, 2482 - Skellefteå, 2418 - Malå, 2417 - Norsjö, 2462 - Vilhelmina, 2481 - Lycksele, 2404 - Vindeln, 2425 - Dorotea, 2409 - Robertsfors, 2480 - Umeå, 2463 - Åsele, 2403 - Bjurholm, 2460 - Vännäs, 2401 - Nordmaling. För att underlätta läsning av diagrammet har 'klossar' införts - varje kloss motsvarar 50 tjänster.*
 
 <br>
 
@@ -3225,12 +3276,14 @@ df_22_ssyk1_2_omrade$total_vac <- as.numeric(df_22_ssyk1_2_omrade$total_vac)
 df_22_ssyk1_2_omrade <- df_22_ssyk1_2_omrade %>%
   mutate(occupation_field.label = forcats::fct_reorder(occupation_field.label, total_vac, .fun = sum),
          workplace_address.municipality_code = factor(workplace_address.municipality_code, 
-                                                      levels = c("2361", "2326", "2305", "2303", "2380","2321","2309","2313")))
+        levels = c("2422","2421","2482","2418","2417","2462","2481","2404","2425","2409","2480","2463","2403","2460","2401")))
 
-color_mapping <- c("2313" = "#FF7F00", "2309" = "#FDBF6F", "2321" = "#E31A1C", "2380" = "#FB9A99", 
-                   "2303" = "#33A02C", "2305" = "#B2DF8A", "2326" = "#1F78B4", "2361" = "#A6CEE3")
 
-ggplot(df_22_ssyk1_2_omrade, aes(x = occupation_field.label, y = total_vac, fill = factor(workplace_address.municipality_code, levels = c("2361", "2326", "2305", "2303", "2380","2321","2309","2313")))) +
+
+color_mapping <- c("2422" = "#800000","2421" = "#9A6324","2482"="#808000","2418"="#469990","2417"="#000075","2462"="#E6194B","2481"="#F58231","2404"="#FFE119","2425"="#3CB44B","2409"="#4363D8","2480"="#911EB4","2463"="#F032E6","2403"="#A9A9A9","2460"="#FABED4","2401"="#DCBEFF")
+
+
+ggplot(df_22_ssyk1_2_omrade, aes(x = occupation_field.label, y = total_vac, fill = factor(workplace_address.municipality_code, levels = c("2422","2421","2482","2418","2417","2462","2481","2404","2425","2409","2480","2463","2403","2460","2401")))) +
   geom_col() +
   scale_fill_manual(values=color_mapping, guide = guide_legend(reverse = TRUE)) +
   geom_hline(yintercept = seq(from = 0, to = max_value, by = 50), color = "white") +
@@ -3246,7 +3299,7 @@ ggplot(df_22_ssyk1_2_omrade, aes(x = occupation_field.label, y = total_vac, fill
        caption = "Källa: Af och bearbetningar av Region Västernorrland") +
   coord_flip()
 ```
-*Kommunkod: 2313 - Strömsund, 2309 - Krokom, 2321 - Åre, 2380 - Östersund, 2303 - Ragunda, 2305 - Bräcke, 2326 - Berg, 2361 - Härjedalen. För att underlätta läsning av diagrammet har 'klossar' införts - varje kloss motsvarar 50 tjänster.*
+*Kommunkod: 2422 - Sorsele, 2421 - Storuman, 2482 - Skellefteå, 2418 - Malå, 2417 - Norsjö, 2462 - Vilhelmina, 2481 - Lycksele, 2404 - Vindeln, 2425 - Dorotea, 2409 - Robertsfors, 2480 - Umeå, 2463 - Åsele, 2403 - Bjurholm, 2460 - Vännäs, 2401 - Nordmaling. För att underlätta läsning av diagrammet har 'klossar' införts - varje kloss motsvarar 50 tjänster.*
 
 <br>
 
@@ -3310,12 +3363,14 @@ df_22_ssyk1_2_omrade$total_vac <- as.numeric(df_22_ssyk1_2_omrade$total_vac)
 df_22_ssyk1_2_omrade <- df_22_ssyk1_2_omrade %>%
   mutate(occupation_field.label = forcats::fct_reorder(occupation_field.label, total_vac, .fun = sum),
          workplace_address.municipality_code = factor(workplace_address.municipality_code, 
-                                                      levels = c("2361", "2326", "2305", "2303", "2380","2321","2309","2313")))
+        levels = c("2422","2421","2482","2418","2417","2462","2481","2404","2425","2409","2480","2463","2403","2460","2401")))
 
-color_mapping <- c("2313" = "#FF7F00", "2309" = "#FDBF6F", "2321" = "#E31A1C", "2380" = "#FB9A99", 
-                   "2303" = "#33A02C", "2305" = "#B2DF8A", "2326" = "#1F78B4", "2361" = "#A6CEE3")
 
-ggplot(df_22_ssyk1_2_omrade, aes(x = occupation_field.label, y = total_vac, fill = factor(workplace_address.municipality_code, levels = c("2361", "2326", "2305", "2303", "2380","2321","2309","2313")))) +
+
+color_mapping <- c("2422" = "#800000","2421" = "#9A6324","2482"="#808000","2418"="#469990","2417"="#000075","2462"="#E6194B","2481"="#F58231","2404"="#FFE119","2425"="#3CB44B","2409"="#4363D8","2480"="#911EB4","2463"="#F032E6","2403"="#A9A9A9","2460"="#FABED4","2401"="#DCBEFF")
+
+
+ggplot(df_22_ssyk1_2_omrade, aes(x = occupation_field.label, y = total_vac, fill = factor(workplace_address.municipality_code, levels = c("2422","2421","2482","2418","2417","2462","2481","2404","2425","2409","2480","2463","2403","2460","2401")))) +
   geom_col() +
   scale_fill_manual(values=color_mapping, guide = guide_legend(reverse = TRUE)) +
   geom_hline(yintercept = seq(from = 0, to = max_value, by = 50), color = "white") +
@@ -3331,7 +3386,7 @@ ggplot(df_22_ssyk1_2_omrade, aes(x = occupation_field.label, y = total_vac, fill
        caption = "Källa: Af och bearbetningar av Region Västernorrland") +
   coord_flip()
 ```
-*Kommunkod: 2313 - Strömsund, 2309 - Krokom, 2321 - Åre, 2380 - Östersund, 2303 - Ragunda, 2305 - Bräcke, 2326 - Berg, 2361 - Härjedalen. För att underlätta läsning av diagrammet har 'klossar' införts - varje kloss motsvarar 50 tjänster.*
+*Kommunkod: 2422 - Sorsele, 2421 - Storuman, 2482 - Skellefteå, 2418 - Malå, 2417 - Norsjö, 2462 - Vilhelmina, 2481 - Lycksele, 2404 - Vindeln, 2425 - Dorotea, 2409 - Robertsfors, 2480 - Umeå, 2463 - Åsele, 2403 - Bjurholm, 2460 - Vännäs, 2401 - Nordmaling. För att underlätta läsning av diagrammet har 'klossar' införts - varje kloss motsvarar 50 tjänster.*
 
 <br>
 
@@ -3395,12 +3450,14 @@ df_22_ssyk1_2_omrade$total_vac <- as.numeric(df_22_ssyk1_2_omrade$total_vac)
 df_22_ssyk1_2_omrade <- df_22_ssyk1_2_omrade %>%
   mutate(occupation_field.label = forcats::fct_reorder(occupation_field.label, total_vac, .fun = sum),
          workplace_address.municipality_code = factor(workplace_address.municipality_code, 
-                                                      levels = c("2361", "2326", "2305", "2303", "2380","2321","2309","2313")))
+        levels = c("2422","2421","2482","2418","2417","2462","2481","2404","2425","2409","2480","2463","2403","2460","2401")))
 
-color_mapping <- c("2313" = "#FF7F00", "2309" = "#FDBF6F", "2321" = "#E31A1C", "2380" = "#FB9A99", 
-                   "2303" = "#33A02C", "2305" = "#B2DF8A", "2326" = "#1F78B4", "2361" = "#A6CEE3")
 
-ggplot(df_22_ssyk1_2_omrade, aes(x = occupation_field.label, y = total_vac, fill = factor(workplace_address.municipality_code, levels = c("2361", "2326", "2305", "2303", "2380","2321","2309","2313")))) +
+
+color_mapping <- c("2422" = "#800000","2421" = "#9A6324","2482"="#808000","2418"="#469990","2417"="#000075","2462"="#E6194B","2481"="#F58231","2404"="#FFE119","2425"="#3CB44B","2409"="#4363D8","2480"="#911EB4","2463"="#F032E6","2403"="#A9A9A9","2460"="#FABED4","2401"="#DCBEFF")
+
+
+ggplot(df_22_ssyk1_2_omrade, aes(x = occupation_field.label, y = total_vac, fill = factor(workplace_address.municipality_code, levels = c("2422","2421","2482","2418","2417","2462","2481","2404","2425","2409","2480","2463","2403","2460","2401")))) +
   geom_col() +
   scale_fill_manual(values=color_mapping, guide = guide_legend(reverse = TRUE)) +
   geom_hline(yintercept = seq(from = 0, to = max_value, by = 50), color = "white") +
@@ -3416,7 +3473,7 @@ ggplot(df_22_ssyk1_2_omrade, aes(x = occupation_field.label, y = total_vac, fill
        caption = "Källa: Af och bearbetningar av Region Västernorrland") +
   coord_flip()
 ```
-*Kommunkod: 2313 - Strömsund, 2309 - Krokom, 2321 - Åre, 2380 - Östersund, 2303 - Ragunda, 2305 - Bräcke, 2326 - Berg, 2361 - Härjedalen. För att underlätta läsning av diagrammet har 'klossar' införts - varje kloss motsvarar 50 tjänster.*
+*Kommunkod: 2422 - Sorsele, 2421 - Storuman, 2482 - Skellefteå, 2418 - Malå, 2417 - Norsjö, 2462 - Vilhelmina, 2481 - Lycksele, 2404 - Vindeln, 2425 - Dorotea, 2409 - Robertsfors, 2480 - Umeå, 2463 - Åsele, 2403 - Bjurholm, 2460 - Vännäs, 2401 - Nordmaling. För att underlätta läsning av diagrammet har 'klossar' införts - varje kloss motsvarar 50 tjänster.*
 
 <br>
 
@@ -3462,11 +3519,6 @@ Källa: Af och bearbetningar av Region Västernorrland
 ## Filter
 df_22_ssyk1_2_omrade <- filter(df, ssyk1_code == 0)
 
-# Check if df_22_omrade_kval is empty
-if (nrow(df_22_ssyk1_2_omrade) == 0) {
-  message("The dataframe is empty. Skipping this chunk.")
-  knitr::opts_chunk$set(error = FALSE)  # Stop chunk execution here
-} else {
 df_22_ssyk1_2_omrade <- df_22_ssyk1_2_omrade %>%
   group_by(occupation_field.label, workplace_address.municipality_code) %>%
   summarize(total_vac = sum(number_of_vacancies, na.rm = TRUE)) %>%
@@ -3485,37 +3537,30 @@ df_22_ssyk1_2_omrade$total_vac <- as.numeric(df_22_ssyk1_2_omrade$total_vac)
 df_22_ssyk1_2_omrade <- df_22_ssyk1_2_omrade %>%
   mutate(occupation_field.label = forcats::fct_reorder(occupation_field.label, total_vac, .fun = sum),
          workplace_address.municipality_code = factor(workplace_address.municipality_code, 
-                                                      levels = c("2361", "2326", "2305", "2303", "2380","2321","2309","2313")))
+        levels = c("2422","2421","2482","2418","2417","2462","2481","2404","2425","2409","2480","2463","2403","2460","2401")))
 
-color_mapping <- c("2313" = "#FF7F00", "2309" = "#FDBF6F", "2321" = "#E31A1C", "2380" = "#FB9A99", 
-                   "2303" = "#33A02C", "2305" = "#B2DF8A", "2326" = "#1F78B4", "2361" = "#A6CEE3")
 
-gg<-ggplot(df_22_ssyk1_2_omrade, aes(x = occupation_field.label, y = total_vac, fill = factor(workplace_address.municipality_code, levels = c("2361", "2326", "2305", "2303", "2380","2321","2309","2313")))) +
+
+color_mapping <- c("2422" = "#800000","2421" = "#9A6324","2482"="#808000","2418"="#469990","2417"="#000075","2462"="#E6194B","2481"="#F58231","2404"="#FFE119","2425"="#3CB44B","2409"="#4363D8","2480"="#911EB4","2463"="#F032E6","2403"="#A9A9A9","2460"="#FABED4","2401"="#DCBEFF")
+
+
+ggplot(df_22_ssyk1_2_omrade, aes(x = occupation_field.label, y = total_vac, fill = factor(workplace_address.municipality_code, levels = c("2422","2421","2482","2418","2417","2462","2481","2404","2425","2409","2480","2463","2403","2460","2401")))) +
   geom_col() +
   scale_fill_manual(values=color_mapping, guide = guide_legend(reverse = TRUE)) +
+  geom_hline(yintercept = seq(from = 0, to = max_value, by = 50), color = "white") +
   theme_tufte() +
   theme(plot.title = element_text(size = 14, face = "bold"),
         legend.title = element_blank(),
         legend.position = "bottom",
         axis.ticks.x = element_blank()) +
   labs(title = "Lediga tjänster",
-       subtitle = sprintf("SSYK1-0 och yrkesområde - %s", geografi),
+       subtitle = sprintf("SSYK1-9 och yrkesområde - %s", geografi),
        y = "Tjänster",
        x = "",
        caption = "Källa: Af och bearbetningar av Region Västernorrland") +
-  scale_y_continuous(labels = number_format(accuracy = 1))+
   coord_flip()
-
-  # Check if df_22_omrade_kval is not empty before adding geom_hline
-  if (!is_empty(df_22_ssyk1_2_omrade)) {
-    gg <- gg + geom_hline(yintercept = seq(from = 0, to = max_value, by = 50), color = "white")
-  }
-
-  gg  # Display the plot
-
-}
 ```
-*Kommunkod: 2313 - Strömsund, 2309 - Krokom, 2321 - Åre, 2380 - Östersund, 2303 - Ragunda, 2305 - Bräcke, 2326 - Berg, 2361 - Härjedalen. För att underlätta läsning av diagrammet har 'klossar' införts - varje kloss motsvarar 50 tjänster.*
+*Kommunkod: 2422 - Sorsele, 2421 - Storuman, 2482 - Skellefteå, 2418 - Malå, 2417 - Norsjö, 2462 - Vilhelmina, 2481 - Lycksele, 2404 - Vindeln, 2425 - Dorotea, 2409 - Robertsfors, 2480 - Umeå, 2463 - Åsele, 2403 - Bjurholm, 2460 - Vännäs, 2401 - Nordmaling. För att underlätta läsning av diagrammet har 'klossar' införts - varje kloss motsvarar 50 tjänster.*
 
 <br>
 
@@ -3559,7 +3604,7 @@ Källa: Af och bearbetningar av Region Västernorrland
 
 Rapport genererad genom R med R Markdown.
 
-Kontakt: ilkka.kemppainen@regionjh.se
+Kontakt: anna.norin@regionvasterbotten.se
 
 <br>
 
