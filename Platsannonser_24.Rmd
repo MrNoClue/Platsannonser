@@ -20,7 +20,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 :::{#preface}
 <p>
-Detta PM visar annonsdata från Arbetsförmedlingens JobTech API, till och med 2024-01-01 - syftet är att ge en nulägesbild av eftersökt kompetens (yrken).
+Detta PM visar annonsdata från Arbetsförmedlingens JobTech API, till och med 2024-05-31 - syftet är att ge en nulägesbild av eftersökt kompetens (yrken).
 
 Lediga tjänster redovisas utifrån två olika ingångar: område och nivå. I "Yrkesområde (Af)" redovisas lediga tjänster utifrån område, därefter redovisas, per område, vilka yrken (SSYK3) som eftersöks. I "Nivå (SSYK1)" redovisas istället lediga tjänster utifrån den första nivån i SSYK-indelningen - den signalerar vilken utbildningsnivå yrkena kräver. Per nivå redovisas sedan inom vilka områden som eftersökta yrken finns.
 </p>
@@ -873,48 +873,49 @@ ggplot(df_22_omrade, aes(x = ssyk3_text, y = total_vac, fill =
 ## Hantverk
 
 ```{r omradeH_SSYK_kval_22, message=FALSE, warning=FALSE, fig.align = "center"}
-## Filter
+# Filter the data based on the condition
 df_22_omrade_kval <- filter(df, occupation_field.label == "Hantverk")
 
-df_22_omrade_kval <- df_22_omrade_kval %>%
-  group_by(ssyk3_text, ssyk3_code, kvalifikations_niva) %>%
-  summarize(total_vac = sum(number_of_vacancies, na.rm = TRUE)) %>%
-  ungroup()
+# Check if any rows match the condition
+if (nrow(df_22_omrade_kval) == 0) {
+  # Handle the case where there are no rows matching the condition
+  # For example, print a message or take alternative actions
+  print("Inga annonser.")
+} else {
+  # Proceed with further operations
+  df_22_omrade_kval <- df_22_omrade_kval %>%
+    group_by(ssyk3_text, ssyk3_code, kvalifikations_niva) %>%
+    summarize(total_vac = sum(number_of_vacancies, na.rm = TRUE)) %>%
+    ungroup()
 
-max_value <- df_22_omrade_kval %>%
-  group_by(ssyk3_text) %>%
-  summarize(total_vac_sum = sum(total_vac)) %>%
-  arrange(desc(total_vac_sum)) %>%
-  slice(1) %>%
-  pull(total_vac_sum)
+  max_value <- max(df_22_omrade_kval$total_vac)
 
+  df_22_omrade_kval$total_vac <- as.numeric(df_22_omrade_kval$total_vac)
 
-df_22_omrade_kval$total_vac <- as.numeric(df_22_omrade_kval$total_vac)
+  df_22_omrade_kval <- df_22_omrade_kval %>%
+    mutate(ssyk3_text = forcats::fct_reorder(ssyk3_text, total_vac, .fun = sum),
+           kvalifikations_niva = factor(kvalifikations_niva, levels = c("1", "2", "3", "4")))
 
-df_22_omrade_kval <- df_22_omrade_kval %>%
-  mutate(ssyk3_text = forcats::fct_reorder(ssyk3_text, total_vac, .fun = sum),
-         kvalifikations_niva = factor(kvalifikations_niva, levels = c("1", "2", "3", "4")))
+  color_mapping <- c("1" = "#FDE725", "2" = "#35B779", "3" = "#31688E", "4" = "#440154")
 
+  ggplot(df_22_omrade_kval, aes(x = ssyk3_text, y = total_vac, fill = factor(kvalifikations_niva, levels = c("4", "3", "2", "1")))) +
+    geom_col() +
+    scale_fill_manual(values=color_mapping, guide = guide_legend(reverse = TRUE)) +
+    geom_hline(yintercept = seq(from = 0, to = max_value, by = 50), color = "white") +
+    theme_tufte() +
+    theme(plot.title = element_text(size = 14, face = "bold"),
+          legend.title = element_blank(),
+          legend.position = "bottom",
+          axis.ticks.x = element_blank()) +
+    labs(title = "Lediga tjänster",
+         subtitle = sprintf("Hantverk, SSYK3 - %s", geografi),
+         y = "Tjänster",
+         x = "",
+         caption = "Källa: Af och bearbetningar av Region Västernorrland") +
+    scale_y_continuous(labels = number_format(accuracy = 1)) +
+    coord_flip()
+}
 
-color_mapping <- c("1" = "#FDE725", "2" = "#35B779", "3" = "#31688E", "4" = "#440154")
-
-
-ggplot(df_22_omrade_kval, aes(x = ssyk3_text, y = total_vac, fill = factor(kvalifikations_niva, levels = c("4", "3", "2", "1")))) +
-  geom_col() +
-  scale_fill_manual(values=color_mapping, guide = guide_legend(reverse = TRUE)) +
-  geom_hline(yintercept = seq(from = 0, to = max_value, by = 50), color = "white") +
-  theme_tufte() +
-  theme(plot.title = element_text(size = 14, face = "bold"),
-        legend.title = element_blank(),
-        legend.position = "bottom",
-        axis.ticks.x = element_blank()) +
-  labs(title = "Lediga tjänster",
-       subtitle = sprintf("Hantverk, SSYK3 - %s", geografi),
-       y = "Tjänster",
-       x = "",
-       caption = "Källa: Af och bearbetningar av Region Västernorrland") +
-  scale_y_continuous(labels = number_format(accuracy = 1))+
-  coord_flip()
 ```
 *1 - Inga eller låga formella utbildningskrav, 2 - Gymnasie eller eftergymnasial utbildning kortare än 2 år, 3 - Praktiska eller yrkesspecifika eftergymnasiala utbildningar på 2-3 år, 4 - Teoretiska eftergymnasiala utbildningar om minst 3 år. För att underlätta läsning av diagrammet har 'klossar' införts - varje kloss motsvarar 50 tjänster.*
 
@@ -924,6 +925,10 @@ ggplot(df_22_omrade_kval, aes(x = ssyk3_text, y = total_vac, fill = factor(kvali
 
 ## Filter on 22
 df_22_omrade <- filter(df, occupation_field.label == "Hantverk")
+
+if (nrow(df_22_omrade)==0) {
+  print("Inga annonser.")
+} else {
 
 df_22_omrade <- df_22_omrade %>%
   group_by(ssyk3_text, workplace_address.municipality_code) %>%
@@ -967,7 +972,7 @@ ggplot(df_22_omrade, aes(x = ssyk3_text, y = total_vac, fill =
   scale_y_continuous(labels = number_format(accuracy = 1))+
   coord_flip()
 
-
+}
 ```
 *Kommunkod: 2422 - Sorsele, 2421 - Storuman, 2482 - Skellefteå, 2418 - Malå, 2417 - Norsjö, 2462 - Vilhelmina, 2481 - Lycksele, 2404 - Vindeln, 2425 - Dorotea, 2409 - Robertsfors, 2480 - Umeå, 2463 - Åsele, 2403 - Bjurholm, 2460 - Vännäs, 2401 - Nordmaling. För att underlätta läsning av diagrammet har 'klossar' införts - varje kloss motsvarar 50 tjänster.*
 
@@ -1656,6 +1661,9 @@ gg<-ggplot(df_22_omrade_kval, aes(x = ssyk3_text, y = total_vac, fill = factor(k
 
 ## Filter on 22
 df_22_omrade <- filter(df, occupation_field.label == "Militära yrken")
+if(nrow(df_22_omrade)==0){
+  print("Inga annonser.")
+} else {
 
 df_22_omrade <- df_22_omrade %>%
   group_by(ssyk3_text, workplace_address.municipality_code) %>%
@@ -1699,6 +1707,7 @@ ggplot(df_22_omrade, aes(x = ssyk3_text, y = total_vac, fill =
   scale_y_continuous(labels = number_format(accuracy = 1))+
   coord_flip()
 
+}
 
 ```
 *Kommunkod: 2422 - Sorsele, 2421 - Storuman, 2482 - Skellefteå, 2418 - Malå, 2417 - Norsjö, 2462 - Vilhelmina, 2481 - Lycksele, 2404 - Vindeln, 2425 - Dorotea, 2409 - Robertsfors, 2480 - Umeå, 2463 - Åsele, 2403 - Bjurholm, 2460 - Vännäs, 2401 - Nordmaling. För att underlätta läsning av diagrammet har 'klossar' införts - varje kloss motsvarar 50 tjänster.*
@@ -3519,6 +3528,10 @@ Källa: Af och bearbetningar av Region Västernorrland
 ## Filter
 df_22_ssyk1_2_omrade <- filter(df, ssyk1_code == 0)
 
+if(nrow(df_22_ssyk1_2_omrade)==0){
+  print("Inga annonser.")
+} else {
+
 df_22_ssyk1_2_omrade <- df_22_ssyk1_2_omrade %>%
   group_by(occupation_field.label, workplace_address.municipality_code) %>%
   summarize(total_vac = sum(number_of_vacancies, na.rm = TRUE)) %>%
@@ -3559,6 +3572,7 @@ ggplot(df_22_ssyk1_2_omrade, aes(x = occupation_field.label, y = total_vac, fill
        x = "",
        caption = "Källa: Af och bearbetningar av Region Västernorrland") +
   coord_flip()
+}
 ```
 *Kommunkod: 2422 - Sorsele, 2421 - Storuman, 2482 - Skellefteå, 2418 - Malå, 2417 - Norsjö, 2462 - Vilhelmina, 2481 - Lycksele, 2404 - Vindeln, 2425 - Dorotea, 2409 - Robertsfors, 2480 - Umeå, 2463 - Åsele, 2403 - Bjurholm, 2460 - Vännäs, 2401 - Nordmaling. För att underlätta läsning av diagrammet har 'klossar' införts - varje kloss motsvarar 50 tjänster.*
 

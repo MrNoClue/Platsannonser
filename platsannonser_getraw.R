@@ -17,7 +17,7 @@ library(rio)
 
 
 # URL till Jobtechs api ange från när annonserna ska vara utlagda och senaste uppdaterade
-annonsyrkesomr_url <- paste0("https://jobstream.api.jobtechdev.se/stream?date=2023-11-30T00:00:00&updated-before-date=2024-01-01T23:59:59")
+annonsyrkesomr_url <- paste0("https://jobstream.api.jobtechdev.se/stream?date=2024-04-30T00:00:00&updated-before-date=2024-05-31T23:59:59")
 
 # Ladda hem annonser
 dfannonser = content(GET(annonsyrkesomr_url,
@@ -43,7 +43,7 @@ dftraffar <- dfannonser %>%
 # ladda hem tidiga annonser för sig, annars får jag ett diffust
 # "incorrect end of file"-fel
 
-annonsyrkesomr_url_tidiga <- paste0("https://jobstream.api.jobtechdev.se/stream?date=2023-06-01T00:00:00&updated-before-date=2023-11-29T23:59:59")
+annonsyrkesomr_url_tidiga <- paste0("https://jobstream.api.jobtechdev.se/stream?date=2023-12-01T00:00:00&updated-before-date=2024-04-29T23:59:59")
 
 dfannonser_tidiga = content(GET(annonsyrkesomr_url_tidiga,
                                 config =
