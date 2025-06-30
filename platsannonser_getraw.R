@@ -245,7 +245,7 @@ datum <- format(Sys.Date(), "%y%m%d")  # Ger t.ex. "250623"
 
 ### 2 diffrent file-names for output file
 #filnamn <- paste0("Platsannonser/platsannons_wtext_", datum, ".xlsx")
-filnamn <- "Platsannonser/platsannons_wtext.xlsx" # used in .rmd-files
+filnamn <- "platsannons_wtext.xlsx" # used in .rmd-files
 
 write_xlsx(df, filnamn)
 
