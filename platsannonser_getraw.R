@@ -17,7 +17,7 @@ library(rio)
 
 
 # URL till Jobtechs api ange från när annonserna ska vara utlagda och senaste uppdaterade
-annonsyrkesomr_url <- paste0("https://jobstream.api.jobtechdev.se/stream?date=2024-04-30T00:00:00&updated-before-date=2024-05-31T23:59:59")
+annonsyrkesomr_url <- paste0("https://jobstream.api.jobtechdev.se/stream?date=2025-04-01T00:00:00&updated-before-date=2025-06-24T12:00:00")
 
 # Ladda hem annonser
 dfannonser = content(GET(annonsyrkesomr_url,
@@ -43,7 +43,7 @@ dftraffar <- dfannonser %>%
 # ladda hem tidiga annonser för sig, annars får jag ett diffust
 # "incorrect end of file"-fel
 
-annonsyrkesomr_url_tidiga <- paste0("https://jobstream.api.jobtechdev.se/stream?date=2023-12-01T00:00:00&updated-before-date=2024-04-29T23:59:59")
+annonsyrkesomr_url_tidiga <- paste0("https://jobstream.api.jobtechdev.se/stream?date=2024-12-01T00:00:00&updated-before-date=2025-03-31T23:59:59")
 
 dfannonser_tidiga = content(GET(annonsyrkesomr_url_tidiga,
                                 config =
@@ -72,10 +72,18 @@ sum(dftraffar_sammanslagna$number_of_vacancies, na.rm = TRUE)
 
 # Välj ut relevanta kol.
 df <- dftraffar_sammanslagna %>% 
-  select(id, number_of_vacancies, access_to_own_car, driving_license_required, employment_type.label,
-         employer.workplace, ssyk4 = occupation_group.legacy_ams_taxonomy_id, 
-         occupation_group.label, working_hours_type.label, duration.label, workplace_address.municipality_code,
-         occupation_field.label, must_have.languages)
+  select(id, number_of_vacancies, employment_type.label, working_hours_type.label,
+         duration.label,
+         
+         employer.workplace, workplace_address.municipality_code,
+         
+         occupation_field.label, 
+         ssyk4 = occupation_group.legacy_ams_taxonomy_id, 
+         occupation_group.label,
+         
+         must_have.languages, access_to_own_car, driving_license_required,
+         
+         description.text)
 
 # Un-list col.
 df$must_have.languages <- sapply(df$must_have.languages, function(lst) lst$label)
@@ -83,7 +91,7 @@ df$must_have.languages <- sapply(df$must_have.languages, function(lst) lst$label
 # Try to make cell-values with string="c()" to only view chr 
 df$must_have.languages <- gsub('[c\\(\\)]', '', df$must_have.languages)
 
-## Mutate driving: T/F to 1/0 and kval-niva
+## Mutate driving: T/F to 1/0 and kval-niva, case_when() är ordningsstryd
 df <- df %>%
   mutate(driving_license_value = as.integer(driving_license_required)) %>%
   mutate(kvalifikations_niva = case_when(
@@ -184,10 +192,57 @@ df <- df %>%
 ## Create ssyk3_code from ssyk4
 df <- mutate(df, ssyk3_code = substr(ssyk4, 1, 3))
 
+
 df_ssyk3 <- import("Platsannonser/ssyk3.xlsx")
 df_ssyk3$ssyk3_code <- as.character((df_ssyk3$ssyk3_code))
 
 df <- left_join(df,df_ssyk3)
 df$ssyk3_text <- trimws(df$ssyk3_text)
 
-write_xlsx(df,"Platsannonser/platsannonser.xlsx")
+
+## Add plaintext for municipality and county
+### Source (read) function
+source("functions/f_add_plaintext_from_municipalitycode.R")
+
+### Use function on df
+df <- f_add_plaintext_from_municipalitycode(df, kodkolumn = "workplace_address.municipality_code")
+
+
+## Re-arrange order in df
+df <- select(df, 
+             ### META
+             id, number_of_vacancies,
+             employment_type.label,working_hours_type.label, duration.label,
+             
+             ### Arbetsgivare och kommun
+             employer.workplace, workplace_address.municipality_code,
+             municipality_plaintext, county_plaintext,
+             
+             ### Område, nivå
+             occupation_field.label, ssyk1_code, ssyk1_text,
+             
+             ### SSYK-detalj
+             ssyk4, occupation_group.label,
+             ssyk3_code, ssyk3_text,
+             ssyk2_code, ssyk2_text,
+             
+             ### Krav
+             driving_license_required, driving_license_value, access_to_own_car,
+             must_have.languages,
+             
+             ### Färdighetskrav
+             kvalifikations_niva, kval_label,
+             
+             ### Annonstext
+             description.text
+)
+
+
+
+# OUTPUT
+## Prepare filename
+datum <- format(Sys.Date(), "%y%m%d")  # Ger t.ex. "250623"
+filnamn <- paste0("Platsannonser/platsannons_wtext_", datum, ".xlsx")
+
+write_xlsx(df, filnamn)
+
