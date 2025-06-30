@@ -20,7 +20,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 :::{#preface}
 <p>
-Detta PM visar annonsdata från Arbetsförmedlingens JobTech API, till och med 2024-05-31 - syftet är att ge en nulägesbild av eftersökt kompetens (yrken).
+Detta PM visar annonsdata från Arbetsförmedlingens JobTech API, till och med 2025-06-04 - syftet är att ge en nulägesbild av eftersökt kompetens (yrken).
 
 Lediga tjänster redovisas utifrån två olika ingångar: område och nivå. I "Yrkesområde (Af)" redovisas lediga tjänster utifrån område, därefter redovisas, per område, vilka yrken (SSYK3) som eftersöks. I "Nivå (SSYK1)" redovisas istället lediga tjänster utifrån den första nivån i SSYK-indelningen - den signalerar vilken utbildningsnivå yrkena kräver. Per nivå redovisas sedan inom vilka områden som eftersökta yrken finns.
 </p>
@@ -41,7 +41,7 @@ library(scales)
 root_dir <- getwd()
 
 ## Specify the relative file path from the R root directory
-relative_path <- "platsannonser.xlsx"
+relative_path <- "platsannons_wtext.xlsx"
 
 ## Construct the full file path
 file_path <- file.path(root_dir, relative_path)
@@ -153,7 +153,7 @@ nordmaling <- format(nordmaling, big.mark=" ")
   + `r asele` i Åsele kommun
   + `r bjurholm` i Bjurholm kommun
   + `r vannas` i Vannäs kommun
-  + `r nordmaling` i Umeå kommun
+  + `r nordmaling` i Nordmaling kommun
 
 <br>
 
