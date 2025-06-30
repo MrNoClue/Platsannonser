@@ -244,8 +244,10 @@ df <- select(df,
 datum <- format(Sys.Date(), "%y%m%d")  # Ger t.ex. "250623"
 
 ### 2 diffrent file-names for output file
-#filnamn <- paste0("Platsannonser/platsannons_wtext_", datum, ".xlsx")
-filnamn <- "platsannons_wtext.xlsx" # used in .rmd-files
+#filnamn <- paste0("platsannons_wtext_", datum, ".xlsx") - MrNoClue special
+filnamn <- "platsannons_wtext.xlsx" # used in .rmd-files for Github
+
+
 
 write_xlsx(df, filnamn)
 
